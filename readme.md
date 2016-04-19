@@ -10,8 +10,6 @@
  * Clean up other groups' project (e.g. messy code, hard to understand)
  * Create "new" documentation -> use Template we'll be provided
  * Presentation will be on the Reading Day (i.e. Wednesday, May 11th)
-
-- Reduce redunant checking
+ - Reduce redunant checking
  - Create json object, and check it
-- add couple more missing classes
-- 
+ - add couple more missing classes
