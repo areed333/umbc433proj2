@@ -1,0 +1,17 @@
+Project 2 Notes 4/28/16
+
+Project1.html
+-Use our json data file to reduce hard-coded code to at least half of its current line 
+ amount.
+
+-Need to apply recursion for removal of courses to accurately reflect changes made to 
+ course selections at any point in time. The changes we will make will adjust the courses  
+ that are available so that if the student removes one course they plan to take and that 
+ course is a prerequisite for other courses the student is able to take, those other 
+ courses which this removed class depends on will no longer be available for the student 
+ to select.
+
+UI
+-Want to find some content to occupy the negative space to the far left of the initial page once the application loads. This negative space is beneath the “Computer Science Advising Form” and to the right of where the student enters in their identifying information (e.g. first name, last name, email, campus ID, comments).
+
+-Change color of submit button. 
