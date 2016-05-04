@@ -63,7 +63,7 @@ Name: Project 1 HTML File
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredCMSCLeft,document.documentForm.requiredCMSCRight)">
                             <br>&nbsp;<br>
 							<br>Required Math Courses:<br>
-							<select multiple class="selectm" name="requiredMATHLeft">
+							<select multiple id="selectm" name="requiredMATHLeft">
 								<option value='MATH151'>MATH 151</option>
 								<option value='MATH152'>MATH 152</option>
 								<option value='MATH221'>MATH 221</option>
@@ -72,7 +72,7 @@ Name: Project 1 HTML File
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredMATHLeft,document.documentForm.requiredMATHRight)">
                             <br>&nbsp;<br>
 							<br>Required Science Courses (1 Track):<br>
-							<select multiple class="selectm" name="requiredSCILeft">
+							<select multiple id="selectm" name="requiredSCILeft">
 								<option value='BIOL100'>BIOL 100</option>
 								<option value='BIOL301'>BIOL 301</option>
 								<option value='BIOL141'>BIOL 141</option>
@@ -85,7 +85,7 @@ Name: Project 1 HTML File
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredSCILeft,document.documentForm.requiredSCIRight)">
                             <br>&nbsp;<br>
 							<br>Required Computer Science Electives (2 Required):<br>
-							<select multiple class="selectm" name="electivesCMSCLeft">
+							<select multiple id="selectm" name="electivesCMSCLeft">
 								<option value='CMSC426'>CMSC 426</option>
 								<option value='CMSC431'>CMSC 431</option>
 								<option value='CMSC435'>CMSC 435</option>
@@ -101,7 +101,7 @@ Name: Project 1 HTML File
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.electivesCMSCLeft,document.documentForm.electivesCMSCRight)">
                             <br>&nbsp;<br>
 							<br>Other Computer Science Electives:<br>
-							<select multiple class="selectm" name="electivesOtherLeft">
+							<select multiple id="selectm" name="electivesOtherLeft">
 								<option value='CMSC232'>CMSC 232</option>
 								<option value='CMSC291'>CMSC 291</option>
 								<option value='CMSC299'>CMSC 299</option>
@@ -144,27 +144,27 @@ Name: Project 1 HTML File
 						<div id="RightDiv" class="float-right">
                         	<!--This is the section for courses the student selects as taken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
 							&nbsp;<br>
-							<select multiple class="selectm" name="requiredCMSCRight">
+							<select multiple id="selectm" name="requiredCMSCRight">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredCMSCRight,document.documentForm.requiredCMSCLeft)">
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple class="selectm" name="requiredMATHRight">
+							<select multiple id="selectm" name="requiredMATHRight">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredMATHRight,document.documentForm.requiredMATHLeft)">
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple class="selectm" name="requiredSCIRight">
+							<select multiple id="selectm" name="requiredSCIRight">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredSCIRight,document.documentForm.requiredSCILeft)">
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple class="selectm" name="electivesCMSCRight">
+							<select multiple id="selectm" name="electivesCMSCRight">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesCMSCRight,document.documentForm.electivesCMSCLeft)">
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple class="selectm" name="electivesOtherRight">
+							<select multiple id="selectm" name="electivesOtherRight">
 							</select><br>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesOtherRight,document.documentForm.electivesOtherLeft)">
                             <br>&nbsp;<br>
