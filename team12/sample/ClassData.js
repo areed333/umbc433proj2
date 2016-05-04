@@ -1,5 +1,4 @@
-{
-  "classes": [
+var classes = [
     {
       "type": "CMSC",
       "number": 201,
@@ -605,6 +604,4 @@
       "prereq": 0,
       "x": "1017.5px",
       "y": "920.5px"
-    }
-  ]
-}
+    }]
