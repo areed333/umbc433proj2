@@ -57,19 +57,16 @@ Name: Project 1 HTML File
                         	<!--This is the section for courses the student selects as untaken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
 							Required Computer Science Courses:<br>
 							<select multiple id="selectm" name="requiredCMSCLeft">
-	<script type="text/javascript" src="cmsc.js"></script>
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredCMSCLeft,document.documentForm.requiredCMSCRight)">
                             <br>&nbsp;<br>
 							<br>Required Math Courses:<br>
 							<select multiple id="selectmMath" name="requiredMATHLeft">
-	<script type="text/javascript" src="math.js"></script>
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredMATHLeft,document.documentForm.requiredMATHRight)">
                             <br>&nbsp;<br>
 							<br>Required Science Courses (1 Track):<br>
-							<select multiple id="selectmScience" name="requiredSCILeft">
-	<script type="text/javascript" src="science.js"></script>						
+							<select multiple id="selectmScience" name="requiredSCILeft">				
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredSCILeft,document.documentForm.requiredSCIRight)">
                             <br>&nbsp;<br>
@@ -246,6 +243,7 @@ Name: Project 1 HTML File
 				<input type="submit" value="Submit" onClick="scrubForm()">
 
 			</form>
+			<script type="text/javascript" src="addClasses.js"></script>
 
 			<br>
 			<br>
