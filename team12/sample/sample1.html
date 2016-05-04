@@ -6,6 +6,8 @@ Name: Project 1 HTML File
 	<title>Advising</title>
 	<link rel="stylesheet" type="text/css" href="Project1.css">
 	<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="ClassData.js"></script>
 </head>
 
 <body>
@@ -55,33 +57,19 @@ Name: Project 1 HTML File
                         	<!--This is the section for courses the student selects as untaken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
 							Required Computer Science Courses:<br>
 							<select multiple id="selectm" name="requiredCMSCLeft">
-								<option value='CMSC201'>CMSC 201</option>
-								<option value='CMSC202'>CMSC 202</option>
-								<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-								<script type="text/javascript" src="ClassData.js"></script>
-	<script type="text/javascript" src="sample.js"></script>
+	<script type="text/javascript" src="cmsc.js"></script>
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredCMSCLeft,document.documentForm.requiredCMSCRight)">
                             <br>&nbsp;<br>
 							<br>Required Math Courses:<br>
-							<select multiple id="selectm" name="requiredMATHLeft">
-								<option value='MATH151'>MATH 151</option>
-								<option value='MATH152'>MATH 152</option>
-								<option value='MATH221'>MATH 221</option>
-								<option value='STAT355'>STAT 355</option>
+							<select multiple id="selectmMath" name="requiredMATHLeft">
+	<script type="text/javascript" src="math.js"></script>
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredMATHLeft,document.documentForm.requiredMATHRight)">
                             <br>&nbsp;<br>
 							<br>Required Science Courses (1 Track):<br>
-							<select multiple id="selectm" name="requiredSCILeft">
-								<option value='BIOL100'>BIOL 100</option>
-								<option value='BIOL301'>BIOL 301</option>
-								<option value='BIOL141'>BIOL 141</option>
-								<option value='BIOL142'>BIOL 142</option>
-								<option value='CHEM101'>CHEM 101</option>
-								<option value='CHEM102'>CHEM 102</option>
-								<option value='PHYS121'>PHYS 121</option>
-								<option value='PHYS122'>PHYS 122</option>
+							<select multiple id="selectmScience" name="requiredSCILeft">
+	<script type="text/javascript" src="science.js"></script>						
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredSCILeft,document.documentForm.requiredSCIRight)">
                             <br>&nbsp;<br>

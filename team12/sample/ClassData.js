@@ -1,4 +1,4 @@
-var classes = [
+var CMSC = [
     {
       "type": "CMSC",
       "number": 201,
@@ -604,4 +604,167 @@ var classes = [
       "prereq": 0,
       "x": "1017.5px",
       "y": "920.5px"
+    }]
+
+
+
+var MATH = [
+    {
+      "type": "MATH",
+      "number": 151,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "MATH",
+      "number": 152,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "MATH",
+      "number": 221,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "STAT",
+      "number": 355,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    }]
+
+
+var SCIENCE = [
+    {
+      "type": "BIOL",
+      "number": 100,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "BIOL",
+      "number": 301,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "BIOL",
+      "number": 141,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "BIOL",
+      "number": 142,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+      {
+      "type": "CHEM",
+      "number": 101,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "CHEM",
+      "number": 102,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "PHYS",
+      "number": 121,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
+    },
+    {
+      "type": "PHYS",
+      "number": 122,
+      "title": "Computer Science I for Majors",
+      "description": "An introduction to computer science through problem solving and computer programming.",
+      "credit": 4,
+      "unlock": [
+        "CMSC202"
+      ],
+      "prereq": 0,
+      "x": "61px",
+      "y": "84px"
     }]
