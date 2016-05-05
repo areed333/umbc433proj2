@@ -1,0 +1,79 @@
+PROJECT 2 DATES AND TIMES
+
+Submission of Project 2 date: Wednesday, 5/11/16 at 11:59 PM EST (US)
+
+Presentation date: Thursday, 5/12/16 at 2 PM
+
+Location: Meet at ITE 209 (Prof. Lupoli’s office) and we will be directed where to go from there.
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+PROJECT 2 SUBMISSION INFORMATION
+
+-Zip all files up and name the file Project2.zip
+
+-Zip file’s contents
+ *code
+ *images
+ *documentation, external and internal (external: written document of presentation items 1 - 9, internal: comments in the code)
+  -call the external documentation “README DOC”
+  -must be editable (one copy)
+  -can also include a PDF version that is non-editable (another copy)
+ *Database dump
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+PRESENTATION COMPOSITION
+
+-20 minutes total
+ 15 minutes: our group presenting the Project 2 in the same order as items 1 - 9 listed below
+ 5 minutes: Professor said he will be asking us questions about our project
+
+*Each group member needs to talk for an equal amount of time during the presentation (5 minutes per group member)
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+PRESENTATION COMPONENTS —  The presentation is the external documentation spoken verbally
+
+Order of Items for Presentation
+1. Team Introduction (info can be pulled from Project 1)
+    -team member’s names
+    -everyone’s email addresses
+    -roles of each team member
+
+2. Location — how to access files in order to run them
+    -e.g. path to get to file(s) to initiate program to start Project 2
+
+3. Project 2 Description 
+
+4. What Content Did We Add to Team 12’s Project?
+    -Prof. Lupoli said in this section is where we prove the work we did on Project 2 is “A” worthy.
+    -Text details of added content and screen captures of additions within the project
+    -We need to explain why we added this content to Team 12’s project
+
+5. What Content did we Improve on Team 12’s Project?
+    -Identify improvements
+    -Explain why content needed improvement
+
+6. Database Setup 
+    -Include a lot of screen captures to explain the database design of Project 2 
+
+7. Database Dump
+    -text (e.g. the .sql file)
+    -no saved student data needed to include in the dump
+
+8. Languages Used 
+    -HTML   
+    -PHP    
+    -JS     
+    -jQuery 
+
+    *Prof. Lupoli said not to include CSS as a language used, even though CSS is included in the project
+
+    Where each language is used in Project 2
+
+9. Slick Sheet 
+    -Document with screen captures (not video) showing the general working flow of our Project 2 
+     (e.g. the user going through the process of selecting the courses already taken, being able to see the courses they can 
+           take, and having this information stored in the database)
