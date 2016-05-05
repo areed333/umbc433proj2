@@ -1,3 +1,24 @@
+#update 5/5 - 5:37pm
+- adds classes to **Coursework**
+- ClassData.js includes MATH + SCI courses
+- Working on unlocking class with js
+```javascript
+var idMAP = $.grep(Object.keys(CMSC), function (k) { 
+	return CMSC[k].number == courseNumber; })
+```
+- idMAP is CMSC[idMAP] of the course selected
+- use this to get **unlock** string
+```javascript
+var unlockStr = CMSC[idMAP].unlock;
+```
+- make it an array or something, and **for** each class in **unlockStr**
+```javascript
+if (selection2.options[j].text in unlockStr[i]) {
+	allowed = true;	// FOR EACH OF THOSE Classes
+	}
+```
+
+
 #Proj2
 - Team 12
 - Due May 10 by 11:59 PM
