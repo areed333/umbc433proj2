@@ -267,6 +267,16 @@ Name: Project 1 HTML File
 				try {
 					//for each selected class, try to move it
 					if (selection1.options[i].selected == true) {
+						var course = (selection1.options[i].value).substring(0,4);
+						// var courseNumber = (selection1.options[i].value).substring(4);
+						var courseNumber = 341;
+						console.log(course);
+						console.log(courseNumber);
+						var idMAP = $.grep(Object.keys(CMSC), function (k) { 
+							return CMSC[k].number == courseNumber; })
+						console.log(idMAP);
+						console.log("COURSE TO UNLOCK: " + CMSC[idMAP].unlock);
+
 						//By default all class prerequites are not met
 						var allowed = false;
 						//PREREQS -- Allow a class to be added if the prerequisites have been met. this is sorted the same was as the display page, courses are grouped by section. use the comments for navigation
