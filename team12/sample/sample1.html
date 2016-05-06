@@ -7,7 +7,7 @@ Name: Project 1 HTML File
 	<link rel="stylesheet" type="text/css" href="Project1.css">
 	<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="ClassData.js"></script>
+	<script type="text/javascript" src="ClassData3.js"></script>
 </head>
 
 <body>
@@ -267,730 +267,764 @@ Name: Project 1 HTML File
 				try {
 					//for each selected class, try to move it
 					if (selection1.options[i].selected == true) {
-						var course = (selection1.options[i].value).substring(0,4);
-						// var courseNumber = (selection1.options[i].value).substring(4);
-						var courseNumber = 341;
-						console.log(course);
-						console.log(courseNumber);
-						var idMAP = $.grep(Object.keys(CMSC), function (k) { 
-							return CMSC[k].number == courseNumber; })
-						console.log(idMAP);
-						console.log("COURSE TO UNLOCK: " + CMSC[idMAP].unlock);
+						var course = (selection1.options[i].value).substring(0,4)+ " " +(selection1.options[i].value).substring(4);
+						var courseNumber = (selection1.options[i].value).substring(4);
+						console.log("var course: " +course);
+
+						if (selection1.name == "requiredCMSCLeft"){
+							var classObj = CMSC;
+						}
+						else if (selection1.name == "requiredMATHLeft"){
+							var classObj = MATH;
+						}
+
+						console.log("name: "+selection1.name);
+						var objID = $.grep(Object.keys(classObj), function (k) { 
+							return classObj[k].number == courseNumber; })
+						console.log("var objID: " +objID);
+						var preReqArray = classObj[objID].unlock;
+						console.log("preReq: " + preReqArray);
+
 
 						//By default all class prerequites are not met
-						var allowed = false;
+						
 						//PREREQS -- Allow a class to be added if the prerequisites have been met. this is sorted the same was as the display page, courses are grouped by section. use the comments for navigation
-						switch (selection1.options[i].text) {
-							//-------------------------------------------------------------------------------------------------------------------------BEGIN REQUIRED CMSC COURSES
-							case "CMSC 201":
-								allowed = true;
-								break;
-							case "CMSC 202":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 201") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 203":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 202") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 304":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 202") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 313":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 203") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 331":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 203") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 341":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 203") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 411":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 313") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 421":
-								var has313 = false;
-								var has341 = false;
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 313") {
-										has313 = true;	
-									}
-									if (selection2.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								if (has313 && has341) {
-									allowed = true;
-								}	
-								break;
-							case "CMSC 441":
-								has341 = false;
-								hasStat = false;
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								var selection3 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "STAT 355") {
-										hasStat = true;	
-									}
-								}
-								if (has341 && hasStat) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 447":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text.search("4") == 5) {
-										allowed = true;	
-									}
-								}
-								break;
-							//-------------------------------------------------------------------------------------------------------------------------BEGIN REQUIRED MATH COURSES
-							case "MATH 151":
-								allowed = true;
-								break;
-							case "MATH 152":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "MATH 151") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "MATH 221":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "MATH 151") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "STAT 355":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "MATH 152") {
-										allowed = true;	
-									}
-								}
-								break;
-							//-------------------------------------------------------------------------------------------------------------------------BEGIN SCIE TRACK COURSES
-							case "BIOL 100":
-								allowed = true;
-								break;
-							case "BIOL 301":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "BIOL 100") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "BIOL 141":
-								allowed = true;
-								break;
-							case "BIOL 142":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "BIOL 141") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CHEM 101":
-								allowed = true;
-								break;
-							case "CHEM 102":
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "CHEM 101") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "PHYS 121":
-								var selection3 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "MATH 151") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "PHYS 122":
-								var has121 = false;
-								var has152 = false;
-								for (var j = 0; j < selection2.options.length; j++) {
-									if (selection2.options[j].text == "PHYS 121") {
-										has121 = true;	
-									}
-								}
-								var selection3 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "MATH 152") {
-										has152 = true;	
-									}
-								}
-								if (has121 && has152) {
-									allowed = true;	
-								}
-								break;
-							//-------------------------------------------------------------------------------------------------------------------------BEGIN REQUIRED CMSC ELECTIVES
-							case "CMSC 426":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 421") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 431":
-								var has313 = false;
-								var has331 = false;
-								var has341 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 313") {
-										has313 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 331") {
-										has331 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								if (has313 && has331 && has341) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 435":
-								var has313 = false;
-								var has341 = false;
-								var has221 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 313") {
-										has313 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								if (has313 && has341 && has221) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 448":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 447") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 451":
-								var has202 = false;
-								var has203 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 202") {
-										has202 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 203") {
-										has203 = true;	
-									}
-								}
-								if (has202 && has203) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 455":
-								var has341 = false;
-								var has221 = false;
-								var has152 = false;
-								var selection3 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "MATH 152") {
-										has152 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								if (has341 && has221 && has152) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 456":
-								var has341 = false;
-								var has221 = false;
-								var has152 = false;
-								var selection3 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "MATH 152") {
-										has152 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								if (has341 && has221 && has152) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 461":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 471":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 481":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 483":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 421") {
-										allowed = true;	
-									}
-								}
-								break;
-							//-------------------------------------------------------------------------------------------------------------------------BEGIN OTHER CMSC ELECTIVES
-							case "CMSC 232":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 202") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 291":
-								allowed = true;
-								break;
-							case "CMSC 299":
-								allowed = true;
-								break;
-							case "CMSC 352":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								if (selection3.options.length > 0) {
-									allowed = true;
-								}
-								break;
-							case "CMSC 391":
-								allowed = true;
-								break;
-							case "CMSC 404":
-								allowed = true;
-								break;
-							case "CMSC 427":
-								var selection3 = document.documentForm.year;
-								if (selection3.options[3].selected == true) {
-									allowed = true;
-								}
-								break;
-							case "CMSC 432":
-								var has331 = false;
-								var has341 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 331") {
-										has331 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								if (has331 && has341) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 433":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 331") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 436":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 437":
-								var has341 = false;
-								var has221 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								if (has341 && has221) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 442":
-								var has203 = false;
-								var has221 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 203") {
-										has203 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								if (has203 && has221) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 443":
-								var has341 = false;
-								var has221 = false;
-								var has355 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "STAT 355") {
-										has355 = true;	
-									}
-								}
-								if (has341 && has221 && has355) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 444":
-								var has421 = false;
-								var has481 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 421") {
-										has421 = true;	
-									}
-								}
-								var selection4 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "CMSC 481") {
-										has481 = true;	
-									}
-								}
-								if (has421 && has481) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 446":
-								var has331 = false;
-								var has341 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 331") {
-										has331 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								if (has331 && has341) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 452":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 203") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 453":
-								var has341 = false;
-								var has221 = false;
-								var has152 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										has341 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "STAT 355") {
-										has355 = true;	
-									}
-								}
-								if (has341 && has221 && has355) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 457":
-								var has203 = false;
-								var has221 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 203") {
-										has203 = true;	
-									}
-								}
-								var selection4 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "MATH 221") {
-										has221 = true;	
-									}
-								}
-								if (has203 && has221) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 465":
-								var has461 = false;
-								var has481 = false;
-								var selection3 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 461") {
-										has461 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 481") {
-										has481 = true;	
-									}
-								}
-								if (has461 && has481) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 466":
-								var has461 = false;
-								var has481 = false;
-								var selection3 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 461") {
-										has461 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 481") {
-										has481 = true;	
-									}
-								}
-								if (has461 && has481) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 473":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 331") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 475":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 476":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 341") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 477":
-								var selection3 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 471") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 478":
-								var selection3 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 471") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 479":
-								var selection3 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 471") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 484":
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 202") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 486":
-								var selection3 = document.documentForm.requiredMATHRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "MATH 152") {
-										allowed = true;	
-									}
-								}
-								break;
-							case "CMSC 487":
-								var has421 = false;
-								var has481 = false;
-								var selection3 = document.documentForm.requiredCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 421") {
-										has421 = true;	
-									}
-								}
-								var selection4 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection4.options.length; j++) {
-									if (selection4.options[j].text == "CMSC 481") {
-										has481 = true;	
-									}
-								}
-								if (has421 && has481) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 491":
-								allowed = true;
-								break;
-							case "CMSC 493":
-								var has435 = false;
-								var has471 = false;
-								var selection3 = document.documentForm.electivesCMSCRight;
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 435") {
-										has435 = true;	
-									}
-								}
-								for (var j = 0; j < selection3.options.length; j++) {
-									if (selection3.options[j].text == "CMSC 471") {
-										has471 = true;	
-									}
-								}
-								if (has435 && has471) {
-									allowed = true;	
-								}
-								break;
-							case "CMSC 495":
-								allowed = true;
-								break;
-							case "CMSC 498":
-								allowed = true;
-								break;
-							case "CMSC 499":
-								allowed = true;
-								break;
-						}
+						var multiReq = 0;
+						var classSelected = selection1.options[i].text;
+						if (selection2.options.length > 0){
+						for (var j = 0; j < selection2.options.length; j++) {
+							var allowed = false;
+							console.log("result of if: "+$.inArray(selection2.options[j].text, preReqArray));
+							for (var e = 0; e < preReqArray.length; e++){
+									if (($.inArray(selection2.options[j].text, preReqArray) > -1)) {
+										multiReq += 1;
+									}
+								}
+							}}
+							// check if ALL classe preReq are met
+							if (multiReq == preReqArray.length){
+								allowed = true;	
+								console.log("ZERO ALERT: "+preReqArray.length);
+								multiReq == 0;
+							}
+							// if(selection2.options.length == 0){
+							// 	allowed = true;	
+							// }
+							console.log("Multireq: "+multiReq);
+							console.log("lenght: "+preReqArray.length);
+
+
+
+						// switch (selection1.options[i].text) {
+						// 	case "CMSC 201":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 202":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 201") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 203":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 202") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 304":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 202") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 313":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 203") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 331":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 203") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 341":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 203") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 411":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 313") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 421":
+						// 		var has313 = false;
+						// 		var has341 = false;
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 313") {
+						// 				has313 = true;	
+						// 			}
+						// 			if (selection2.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		if (has313 && has341) {
+						// 			allowed = true;
+						// 		}	
+						// 		break;
+						// 	case "CMSC 441":
+						// 		has341 = false;
+						// 		hasStat = false;
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		var selection3 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "STAT 355") {
+						// 				hasStat = true;	
+						// 			}
+						// 		}
+						// 		if (has341 && hasStat) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 447":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text.search("4") == 5) {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	//-------------------------------------------------------------------------------------------------------------------------BEGIN REQUIRED MATH COURSES
+						// 	case "MATH 151":
+						// 		allowed = true;
+						// 		break;
+						// 	case "MATH 152":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "MATH 151") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "MATH 221":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "MATH 151") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "STAT 355":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "MATH 152") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	//-------------------------------------------------------------------------------------------------------------------------BEGIN SCIE TRACK COURSES
+						// 	case "BIOL 100":
+						// 		allowed = true;
+						// 		break;
+						// 	case "BIOL 301":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "BIOL 100") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "BIOL 141":
+						// 		allowed = true;
+						// 		break;
+						// 	case "BIOL 142":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "BIOL 141") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CHEM 101":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CHEM 102":
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "CHEM 101") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "PHYS 121":
+						// 		var selection3 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "MATH 151") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "PHYS 122":
+						// 		var has121 = false;
+						// 		var has152 = false;
+						// 		for (var j = 0; j < selection2.options.length; j++) {
+						// 			if (selection2.options[j].text == "PHYS 121") {
+						// 				has121 = true;	
+						// 			}
+						// 		}
+						// 		var selection3 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "MATH 152") {
+						// 				has152 = true;	
+						// 			}
+						// 		}
+						// 		if (has121 && has152) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	//-------------------------------------------------------------------------------------------------------------------------BEGIN REQUIRED CMSC ELECTIVES
+						// 	case "CMSC 426":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 421") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 431":
+						// 		var has313 = false;
+						// 		var has331 = false;
+						// 		var has341 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 313") {
+						// 				has313 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 331") {
+						// 				has331 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		if (has313 && has331 && has341) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 435":
+						// 		var has313 = false;
+						// 		var has341 = false;
+						// 		var has221 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 313") {
+						// 				has313 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		if (has313 && has341 && has221) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 448":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 447") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 451":
+						// 		var has202 = false;
+						// 		var has203 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 202") {
+						// 				has202 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 203") {
+						// 				has203 = true;	
+						// 			}
+						// 		}
+						// 		if (has202 && has203) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 455":
+						// 		var has341 = false;
+						// 		var has221 = false;
+						// 		var has152 = false;
+						// 		var selection3 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "MATH 152") {
+						// 				has152 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		if (has341 && has221 && has152) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 456":
+						// 		var has341 = false;
+						// 		var has221 = false;
+						// 		var has152 = false;
+						// 		var selection3 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "MATH 152") {
+						// 				has152 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		if (has341 && has221 && has152) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 461":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 471":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 481":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 483":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 421") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	//-------------------------------------------------------------------------------------------------------------------------BEGIN OTHER CMSC ELECTIVES
+						// 	case "CMSC 232":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 202") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 291":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 299":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 352":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		if (selection3.options.length > 0) {
+						// 			allowed = true;
+						// 		}
+						// 		break;
+						// 	case "CMSC 391":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 404":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 427":
+						// 		var selection3 = document.documentForm.year;
+						// 		if (selection3.options[3].selected == true) {
+						// 			allowed = true;
+						// 		}
+						// 		break;
+						// 	case "CMSC 432":
+						// 		var has331 = false;
+						// 		var has341 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 331") {
+						// 				has331 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		if (has331 && has341) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 433":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 331") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 436":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 437":
+						// 		var has341 = false;
+						// 		var has221 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		if (has341 && has221) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 442":
+						// 		var has203 = false;
+						// 		var has221 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 203") {
+						// 				has203 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		if (has203 && has221) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 443":
+						// 		var has341 = false;
+						// 		var has221 = false;
+						// 		var has355 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "STAT 355") {
+						// 				has355 = true;	
+						// 			}
+						// 		}
+						// 		if (has341 && has221 && has355) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 444":
+						// 		var has421 = false;
+						// 		var has481 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 421") {
+						// 				has421 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "CMSC 481") {
+						// 				has481 = true;	
+						// 			}
+						// 		}
+						// 		if (has421 && has481) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 446":
+						// 		var has331 = false;
+						// 		var has341 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 331") {
+						// 				has331 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		if (has331 && has341) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 452":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 203") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 453":
+						// 		var has341 = false;
+						// 		var has221 = false;
+						// 		var has152 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				has341 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "STAT 355") {
+						// 				has355 = true;	
+						// 			}
+						// 		}
+						// 		if (has341 && has221 && has355) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 457":
+						// 		var has203 = false;
+						// 		var has221 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 203") {
+						// 				has203 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "MATH 221") {
+						// 				has221 = true;	
+						// 			}
+						// 		}
+						// 		if (has203 && has221) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 465":
+						// 		var has461 = false;
+						// 		var has481 = false;
+						// 		var selection3 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 461") {
+						// 				has461 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 481") {
+						// 				has481 = true;	
+						// 			}
+						// 		}
+						// 		if (has461 && has481) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 466":
+						// 		var has461 = false;
+						// 		var has481 = false;
+						// 		var selection3 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 461") {
+						// 				has461 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 481") {
+						// 				has481 = true;	
+						// 			}
+						// 		}
+						// 		if (has461 && has481) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 473":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 331") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 475":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 476":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 341") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 477":
+						// 		var selection3 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 471") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 478":
+						// 		var selection3 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 471") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 479":
+						// 		var selection3 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 471") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 484":
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 202") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 486":
+						// 		var selection3 = document.documentForm.requiredMATHRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "MATH 152") {
+						// 				allowed = true;	
+						// 			}
+						// 		}
+						// 		break;
+						// 	case "CMSC 487":
+						// 		var has421 = false;
+						// 		var has481 = false;
+						// 		var selection3 = document.documentForm.requiredCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 421") {
+						// 				has421 = true;	
+						// 			}
+						// 		}
+						// 		var selection4 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection4.options.length; j++) {
+						// 			if (selection4.options[j].text == "CMSC 481") {
+						// 				has481 = true;	
+						// 			}
+						// 		}
+						// 		if (has421 && has481) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 491":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 493":
+						// 		var has435 = false;
+						// 		var has471 = false;
+						// 		var selection3 = document.documentForm.electivesCMSCRight;
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 435") {
+						// 				has435 = true;	
+						// 			}
+						// 		}
+						// 		for (var j = 0; j < selection3.options.length; j++) {
+						// 			if (selection3.options[j].text == "CMSC 471") {
+						// 				has471 = true;	
+						// 			}
+						// 		}
+						// 		if (has435 && has471) {
+						// 			allowed = true;	
+						// 		}
+						// 		break;
+						// 	case "CMSC 495":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 498":
+						// 		allowed = true;
+						// 		break;
+						// 	case "CMSC 499":
+						// 		allowed = true;
+						// 		break;
+						// }
 						//END PREREQS -- All of that was just allowing classes that the student meets prerequites for
 						//if the selected course's prerequites have been met
 						if (allowed) {
