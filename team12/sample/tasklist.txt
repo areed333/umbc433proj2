@@ -1,0 +1,30 @@
+// if greater than 1
+var count
+for i in preqer.letght {
+if .text = prereq[i]
+count +1
+else{var needed.append(prequed)}
+}
+
+if count == prereq.length{
+	allowed = ture
+}
+
+// in switch for loop for needed array
+
+
+// if none
+if lenght = 0 then allowed = tre
+
+
+// if one:
+just allowed = true for that text
+
+
+
+// some courses only available to seniors etc
+i.e 427
+but only one class...
+
+
+// add math requirements to prereq
