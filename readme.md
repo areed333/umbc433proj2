@@ -1,3 +1,39 @@
+#update 5/6 7:43pm
+- first page done
+- second page, **easy to reduce**
+1. Classes chosen is a string (lines 251-261)
+2. Make string an array (note there are 5 groups of classes)
+```php
+$classArray = explode(',', $classes_core_string);
+echo($classArray[0]);
+```
+3. we now have 3 cases:
+	- All classes in group has been taken
+	- one is taken
+- do an easy for loop to check what class it unlocks
+- for each unlock class print message suggesting to take that
+- should be same for most of the sections... now for gateway see 4
+4. **note there are sections for each type of class i.e
+```php
+/*---------------------------------
+/     COMP SCI CORE CHECK!        /
+--------------------------------*/
+```
+- Maybe create a gateway object, each time check if gateway complete, if not print missing classes etc
+- make it an array or something, and **for** each class in **unlockStr**
+- some complex code from their program
+```php
+//CMSC203
+if($_GET["MATH151"]==TRUE && $_GET["CMSC203"]!=TRUE) {
+	echo("-You could(and should!) take <b> CMSC203: Discrete Structures</b><br>");
+}
+//CMSC313
+if($_GET["CMSC202"]==TRUE && $_GET["CMSC203"]==TRUE && $_GET["CMSC313"]!=TRUE) {
+	echo("-You could take <b> CMSC313: Computer Organization and Assembly Language Programming</b><br>");
+}
+```
+
+
 #update 5/5 - 5:37pm
 - adds classes to **Coursework**
 - ClassData.js includes MATH + SCI courses
