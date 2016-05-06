@@ -266,8 +266,9 @@ mysql_insert('proj2', array(
 
 echo("<fieldset>");
 echo ("<legend> Let's take a look at what your options are for next semester!! </legend>");
-echo($classes_core_string);
-echo("test");
+$classArray = explode(',', $classes_core_string);
+echo($classArray[0]);
+//echo("test");
 /*---------------------------------
 /       MATH COURSES CHECK!       /
 --------------------------------*/
@@ -291,7 +292,7 @@ if($_GET["MATH151"]==TRUE) {
 else {
 	//No required Math has been taken.
 	echo("-You could take <b>MATH151: Calculus 1</b><br>");
-	echo("-You could take <b>".$classes_core_string.": Linear Algebra</b><br>");
+	//echo("-You could take <b>".$classes_core_string.": Linear Algebra</b><br>");
 	}
 echo("</fieldset><br>");
 /*------------------------------------
