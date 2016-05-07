@@ -1,0 +1,386 @@
+<!--
+Name: Project 1 HTML File
+-->
+<!DOCTYPE html><html>
+<head>
+	<title>Advising</title>
+	<link rel="stylesheet" type="text/css" href="Project1.css">
+	<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="ClassData3.js"></script>
+</head>
+
+<body>
+	<div class='wrap'>
+		<!--<div class='left'></div>-->
+		<div class='center'>
+        
+            	<img src="umbc50.jpg">
+			<h1>
+                Computer Science Advising Form
+			</h1>
+			<h2>Please fill out the form below before coming to your advising appointment.</h2>
+			<!--start form-->
+			<form action="post_submit.php" name="documentForm" method="get">
+            	<!--this fieldset contains the student personal information-->
+				<fieldset>
+					<legend>Personal information:</legend>
+					Name:<br>
+					<input type="text" name="firstname" placeholder="First" required pattern="[A-Za-z-']+$">
+					<input type="text" name="lastname" placeholder="Last" required pattern="[A-Za-z-']+$"><br><br>
+	
+					Student ID:<br>
+					<input type="text" name="ID" required pattern="([A-Z]|[a-z])([A-Z]|[a-z])[0-9][0-9][0-9][0-9][0-9]$"><br><br>
+	
+					UMBC Email:<br>
+					<input type="email" name="email" required pattern="[A-Za-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br><br>
+	
+					Class Standing:<br>
+					<select name="year">
+						<option value="1">Freshman</option>
+						<option value="2">Sophomore</option>
+						<option value="3">Junior</option>
+						<option value="4">Senior</option>
+                        <option value="5">Other</option>
+					</select>
+
+					<br><br>
+					Additional questions/comments:<br>
+					<textarea id="commentArea" name="comments" rows="10" cols="50"></textarea>
+				</fieldset><br>
+                <!--this fieldset contains all of the select multiples, with courses inside, as well as the buttons to move courses back and forth-->
+				<fieldset class="container">
+                    <legend>Coursework:</legend>
+					<div id="DivWrap" class="wrapper">
+
+						<div id="LeftDiv" class="float-left">
+                        	<!--This is the section for courses the student selects as untaken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
+							Required Computer Science Courses:<br>
+							<select multiple id="selectCmsc" name="requiredCMSCLeft">
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredCMSCLeft,document.documentForm.requiredCMSCRight)">
+                            <br>&nbsp;<br>
+							<br>Required Math Courses:<br>
+							<select multiple id="selectmMath" name="requiredMATHLeft">
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredMATHLeft,document.documentForm.requiredMATHRight)">
+                            <br>&nbsp;<br>
+							<br>Required Science Courses (1 Track):<br>
+							<select multiple id="selectmScience" name="requiredSCILeft">				
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredSCILeft,document.documentForm.requiredSCIRight)">
+                            <br>&nbsp;<br>
+							<br>Required Computer Science Electives (2 Required):<br>
+							<select multiple id="selectmCmscElec" name="electivesCMSCLeft">
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.electivesCMSCLeft,document.documentForm.electivesCMSCRight)">
+                            <br>&nbsp;<br>
+							<br>Other Computer Science Electives:<br>
+							<select multiple id="selectmCmscReqElec" name="electivesOtherLeft">
+							</select><br>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.electivesOtherLeft,document.documentForm.electivesOtherRight)">
+                            <br>&nbsp;<br>
+						</div>
+	
+						<div id="RightDiv" class="float-right">
+                        	<!--This is the section for courses the student selects as taken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
+							&nbsp;<br>
+							<select multiple id="selectCmscL" name="requiredCMSCRight">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredCMSCRight,document.documentForm.requiredCMSCLeft)">
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							<select multiple id="selectmMathL" name="requiredMATHRight">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredMATHRight,document.documentForm.requiredMATHLeft)">
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							<select multiple id="selectmScienceL" name="requiredSCIRight">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredSCIRight,document.documentForm.requiredSCILeft)">
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							<select multiple id="selectmCmscElecL" name="electivesCMSCRight">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesCMSCRight,document.documentForm.electivesCMSCLeft)">
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							<select multiple id="selectmCmscReqElecL" name="electivesOtherRight">
+							</select><br>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesOtherRight,document.documentForm.electivesOtherLeft)">
+                            <br>&nbsp;<br>
+						</div>
+						<br>
+					</div>
+				</fieldset><br>
+                <!--These are a set of hidden checkboxes, each of which represents a possible course. The javascript takes care of checking and unchecking them as courses are moved back and forth above,
+               	   and the user will never see these. For debugging it is useful to unmark these as hidden. Additionally, this is the only section of courses the php file checks against, the select multiples
+                   are just a visual front end for the user-->
+                <fieldset hidden>
+                	<legend>DEBUG AREA: DO NOT USE</legend>
+                	<!--required CMSC courses-->
+                	<input type="checkbox" id="CMSC201" name="CMSC201">CMSC201
+                	<input type="checkbox" id="CMSC202" name="CMSC202">CMSC202
+                	<input type="checkbox" id="CMSC203" name="CMSC203">CMSC203
+                	<input type="checkbox" id="CMSC304" name="CMSC304">CMSC304
+                	<input type="checkbox" id="CMSC313" name="CMSC313">CMSC313
+                	<input type="checkbox" id="CMSC331" name="CMSC331">CMSC331
+                	<input type="checkbox" id="CMSC341" name="CMSC341">CMSC341
+                	<input type="checkbox" id="CMSC411" name="CMSC411">CMSC411
+                	<input type="checkbox" id="CMSC421" name="CMSC421">CMSC421
+                	<input type="checkbox" id="CMSC441" name="CMSC441">CMSC441
+                	<input type="checkbox" id="CMSC447" name="CMSC447">CMSC447
+                    <!--required MATH and STAT courses--><br><br>
+                	<input type="checkbox" id="MATH151" name="MATH151">MATH151
+                	<input type="checkbox" id="MATH152" name="MATH152">MATH152
+                	<input type="checkbox" id="MATH221" name="MATH221">MATH221
+                	<input type="checkbox" id="STAT355" name="STAT355">STAT355
+                    <!--SCIE track courses--><br><br>
+                	<input type="checkbox" id="BIOL100" name="BIOL100">BIOL100
+                	<input type="checkbox" id="BIOL301" name="BIOL301">BIOL301
+                	<input type="checkbox" id="BIOL141" name="BIOL141">BIOL141
+                	<input type="checkbox" id="BIOL142" name="BIOL142">BIOL142
+                	<input type="checkbox" id="CHEM101" name="CHEM101">CHEM101
+                	<input type="checkbox" id="CHEM102" name="CHEM102">CHEM102
+                	<input type="checkbox" id="PHYS121" name="PHYS121">PHYS121
+                	<input type="checkbox" id="PHYS122" name="PHYS122">PHYS122
+                    <!--required CMSC electives--><br><br>
+                	<input type="checkbox" id="CMSC426" name="CMSC426">CMSC426
+                	<input type="checkbox" id="CMSC431" name="CMSC431">CMSC431
+                	<input type="checkbox" id="CMSC435" name="CMSC435">CMSC435
+                	<input type="checkbox" id="CMSC448" name="CMSC448">CMSC448
+                	<input type="checkbox" id="CMSC451" name="CMSC451">CMSC451
+                	<input type="checkbox" id="CMSC455" name="CMSC455">CMSC455
+                	<input type="checkbox" id="CMSC456" name="CMSC456">CMSC456
+                	<input type="checkbox" id="CMSC461" name="CMSC461">CMSC461
+                	<input type="checkbox" id="CMSC471" name="CMSC471">CMSC471
+                	<input type="checkbox" id="CMSC481" name="CMSC481">CMSC481
+                	<input type="checkbox" id="CMSC483" name="CMSC483">CMSC483
+                    <!--other CMSC electives--><br><br>
+                	<input type="checkbox" id="CMSC232" name="CMSC232">CMSC232
+                	<input type="checkbox" id="CMSC291" name="CMSC291">CMSC291
+                	<input type="checkbox" id="CMSC299" name="CMSC299">CMSC299
+                	<input type="checkbox" id="CMSC352" name="CMSC352">CMSC352
+                	<input type="checkbox" id="CMSC391" name="CMSC391">CMSC391
+                	<input type="checkbox" id="CMSC404" name="CMSC404">CMSC404
+                	<input type="checkbox" id="CMSC427" name="CMSC427">CMSC427
+                	<input type="checkbox" id="CMSC432" name="CMSC432">CMSC432
+                	<input type="checkbox" id="CMSC433" name="CMSC433">CMSC433
+                	<input type="checkbox" id="CMSC436" name="CMSC436">CMSC436
+                	<input type="checkbox" id="CMSC437" name="CMSC437">CMSC437
+                	<input type="checkbox" id="CMSC442" name="CMSC442">CMSC442
+                	<input type="checkbox" id="CMSC443" name="CMSC443">CMSC443
+                	<input type="checkbox" id="CMSC444" name="CMSC444">CMSC444
+                	<input type="checkbox" id="CMSC446" name="CMSC446">CMSC446
+                	<input type="checkbox" id="CMSC452" name="CMSC452">CMSC452
+                	<input type="checkbox" id="CMSC453" name="CMSC453">CMSC453
+                	<input type="checkbox" id="CMSC457" name="CMSC457">CMSC457
+                	<input type="checkbox" id="CMSC465" name="CMSC465">CMSC465
+                	<input type="checkbox" id="CMSC466" name="CMSC466">CMSC466
+                	<input type="checkbox" id="CMSC473" name="CMSC473">CMSC473
+                	<input type="checkbox" id="CMSC475" name="CMSC475">CMSC475
+                	<input type="checkbox" id="CMSC476" name="CMSC476">CMSC476
+                	<input type="checkbox" id="CMSC477" name="CMSC477">CMSC477
+                	<input type="checkbox" id="CMSC478" name="CMSC478">CMSC478
+                	<input type="checkbox" id="CMSC479" name="CMSC479">CMSC479
+                	<input type="checkbox" id="CMSC484" name="CMSC484">CMSC484
+                	<input type="checkbox" id="CMSC486" name="CMSC486">CMSC486
+                	<input type="checkbox" id="CMSC487" name="CMSC487">CMSC487
+                	<input type="checkbox" id="CMSC491" name="CMSC491">CMSC491
+                	<input type="checkbox" id="CMSC493" name="CMSC493">CMSC493
+                	<input type="checkbox" id="CMSC495" name="CMSC495">CMSC495
+                	<input type="checkbox" id="CMSC498" name="CMSC498">CMSC498
+                	<input type="checkbox" id="CMSC499" name="CMSC499">CMSC499
+				</fieldset>
+
+				<br><br><br>
+
+				<input type="submit" value="Submit" onClick="scrubForm()">
+
+			</form>
+			<script type="text/javascript" src="addClasses.js"></script>
+
+			<br>
+			<br>
+
+			<div id="footer">
+            	&#169; UMBC College of Computer Science and Electrical Engineering, 2016 <br>
+                Contact Doug Bennett, Tim Maher, or Naomi Schumacher with problems
+		    </div>
+		</div>
+        <!--<div class='right'></div>-->
+	</div>
+
+	<script language="javascript">
+		//Basically works like this: check prerequisites for selected courses -> if they are met{move and check hidden box} else {window.alert(class prerequites)}
+		//selection1 and selection2 will be in the format document.formName.selectMultipleName
+		function moveRowsRight(selection1, selection2) {
+			var selectionID = '';
+			var selectionText = '';
+			//go through selection1 from top to bottom
+			for (i = 0; i < selection1.options.length; i++) {
+				try {
+					//for each selected class, try to move it
+					if (selection1.options[i].selected == true) {
+
+						// get selected course, split up name/num for .js obj
+						var course = (selection1.options[i].value).substring(0,4)+ " " +(selection1.options[i].value).substring(4);
+						var courseNumber = (selection1.options[i].value).substring(4);
+						console.log("var course: " +course);
+
+						// correct obj based on selected class
+						if (selection1.name == "requiredCMSCLeft"){
+							var classObj = CMSC;
+						}
+						else if (selection1.name == "requiredMATHLeft"){
+							var classObj = MATH;
+						}
+						else if (selection1.name == "requiredSCILeft"){
+							var classObj = SCIENCE;
+						}
+						else if (selection1.name == "electivesCMSCLeft"){
+							var classObj = cmscElective;
+						}
+						else if (selection1.name == "electivesOtherLeft"){
+							var classObj = cmscElectiveOther;
+						}
+
+
+						//console.log("name: "+selection1.name);
+						// id of class in the obj
+						var objID = $.grep(Object.keys(classObj), function (k) { 
+							return classObj[k].number == courseNumber; })
+						//console.log("var objID: " +objID);
+						var preReqArray = classObj[objID].prereq;
+						//console.log("preReq: " + preReqArray);
+
+
+						//By default all class prerequites are not met
+						
+						//PREREQS -- Allow a class to be added if the prerequisites have been met. this is sorted the same was as the display page, courses are grouped by section. use the comments for navigation
+
+
+						var multiReq = 0; // # of times a class in right column is in PREREQ[] array of classSelected
+						var classSelected = selection1.options[i].text; // classSelected
+						var cmsc = document.getElementById("selectCmscL");
+						var math = document.getElementById("selectmMathL");
+						var science = document.getElementById("selectmScienceL");
+						var cmscElec = document.getElementById("selectmCmscElecL");
+						var cmscElecReq = document.getElementById("selectmCmscReqElecL");
+						//var selection = [(document.getElementById("selectCmsc")),(document.getElementById("selectmMath")),(document.getElementById("selectmScience"))(document.getElementById("selectmCmscElec")),(document.getElementById("selectmCmscReqElec")),];
+						//console.log("OPTIONS"+cmscElecReq.options[0].text);
+						var selection = [cmsc,math,science,cmscElec,cmscElecReq];
+						// loop through each PREREQ[] of classSelected , and loop through each right column item 
+						// checks if PREREQ's are met
+						
+						 for(var xyz =0;xyz < selection.length;xyz++){
+							if (selection[xyz].options.length > 0){
+						for (var j = 0; j < selection[xyz].options.length; j++) {
+							var allowed = false;
+							//console.log("result of if: "+$.inArray(selection[i].options[j].text, preReqArray));
+							for (var e = 0; e < preReqArray.length; e++){
+									if (selection[xyz].options[j].text == preReqArray[e]) {
+										multiReq += 1;
+									}
+								}
+							}
+						 }
+
+						}
+							// check if ALL classe preReq are met
+							if (multiReq == preReqArray.length){
+								allowed = true;	
+								console.log("ZERO ALERT: "+preReqArray.length);
+								multiReq == 0;
+							}
+
+							// debug
+							//console.log("Multireq: "+multiReq);
+							//console.log("lenght: "+preReqArray.length);
+							//console.log("ALLOWED: "+allowed);
+
+						//END PREREQS -- All of that was just allowing classes that the student meets prerequites for
+						//if the selected course's prerequites have been met
+						if (allowed) {
+							//save selected course data
+							selectionID = selection1.options[i].value;
+							selectionText = selection1.options[i].text;
+							//create new option in target select multiple
+							var newRow = new Option(selectionText, selectionID);
+							//place saved course data, and erase old entry
+							selection2.options[selection2.length] = newRow;
+							selection1.options[i]=null;
+							//check the chekcbox VERY IMPORTANT
+							document.getElementById(selectionID).checked = true;
+						}
+						//if the selected course's prerequites have not been met
+						else {
+							// print alert message if PREREQ not met
+							var alertMessage = classSelected + " requires ";
+							for(var l=0;l < preReqArray.length;l++){
+								alertMessage += preReqArray[l]+" ";
+							}
+							window.alert(alertMessage);
+							//display the prerequites using window.alert. Courses with no prerequisites are omited. Sorted by the same groups as above, use comments to navigate
+						}
+					}
+				} catch (err) {
+					window.alert(err);
+				}
+			}
+			//sort the select multiple that the course was moved into, only done for ease of use and has no bearing on submission of data
+			sortSelection(selection2);
+		}
+		
+		//function for removing a previously added course. does not consider removing a class that is a prerequite for another as the php will just assume that classes that do not have prerequites were added in error
+		function moveRowsLeft(selection1, selection2) {
+			var selectionID = '';
+			var selectionText = '';
+			//go through selection1 from top to bottom
+			for (i = 0; i < selection1.options.length; i++) {
+				try {
+					//if a course is selected, move it back to the left hand select multiple
+					if (selection1.options[i].selected == true) {
+						selectionID = selection1.options[i].value;
+						selectionText = selection1.options[i].text;
+						var newRow = new Option(selectionText, selectionID);
+						selection2.options[selection2.length] = newRow;
+						selection1.options[i]=null;
+						document.getElementById(selectionID).checked = false;
+					}
+				} catch (err) {window.alert(err);}
+			}
+			//call sort method on the select multiple the item was added to.
+			sortSelection(selection2);
+		}
+		
+		//simple sort method for multiple select objects
+		function sortSelection(selectionList) {
+			var tempId = '';
+			var tempText='';
+			for (x = 0; x < selectionList.length - 1; x++) {
+				for (y = x + 1; y < selectionList.length; y++) {
+					if (selectionList[x].text > selectionList[y].text) {
+						// Swap rows
+						tempId = selectionList[x].value;
+						tempText = selectionList[x].text;
+						selectionList[x].value = selectionList[y].value;
+						selectionList[x].text = selectionList[y].text;
+						selectionList[y].value = tempId;
+						selectionList[y].text = tempText;
+					}
+				}
+			}
+		}
+		
+		//Replaces unsafe characters from the textArea part of the form with HTML safe versions
+		function scrubForm() {
+			var unsafeText = document.getElementById("commentArea").text;
+			var safeText = unsafeText.replace("<", "OPEN ANGLE BRACKET");
+			safeText = unsafeText.replace('"', "DOUBLE QUOTE");
+			safeText = unsafeText.replace(';', "SEMICOLON");
+			document.getElementById("commentArea").text = safeText;
+		}
+	</script>
+</body>
+</html>
