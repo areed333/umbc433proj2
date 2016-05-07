@@ -8,7 +8,11 @@ function sciClass(scclass){
 // for each [i], for each class, print:
 	//  if lowest level in each obj, print "started"
 	//  else if highest level in category, print done
-	// else for each class print what is in unlock
+	// else for each class ADD TO AN ARRAY what to unlock
+// remove duplicates in ARRAY
+// remove classs from slected in ARRAY
+
+
 
 
 // categories:
