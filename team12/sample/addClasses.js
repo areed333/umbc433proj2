@@ -1,31 +1,14 @@
-function cmsc() {
-	select = document.getElementById('selectm');
-  	for (var i = 0; i < CMSC.length; i++) { 
-	var opt = document.createElement('option');
-    opt.value = CMSC[i].type+CMSC[i].number;
-    opt.innerHTML = CMSC[i].type +" "+ CMSC[i].number;
-    select.appendChild(opt);
-}}
-
-function science() {
-	select = document.getElementById('selectmScience');
-  	for (var i = 0; i < SCIENCE.length; i++) { 
-	var opt = document.createElement('option');
-    opt.value = SCIENCE[i].type+SCIENCE[i].number;
-    opt.innerHTML = SCIENCE[i].type +" "+ SCIENCE[i].number;
-    select.appendChild(opt);
-}}
-function math() {
- 	select = document.getElementById('selectmMath');
-  	for (var i = 0; i < MATH.length; i++) { 
-	var opt = document.createElement('option');
-    opt.value = MATH[i].type+MATH[i].number;
-    opt.innerHTML = MATH[i].type +" "+ MATH[i].number;
-    select.appendChild(opt);
-}}
-
-cmsc();
-science();
-math();
-
- 
+function addClasses(item,obj) {
+	select = document.getElementById(item);
+	for (var i = 0; i < obj.length; i++) { 
+		var opt = document.createElement('option');
+		opt.value = obj[i].type+obj[i].number;
+		opt.innerHTML = obj[i].type +" "+ obj[i].number;
+		select.appendChild(opt);
+	}
+}
+var items = ["selectCmsc","selectmMath","selectmScience","selectmCmscElec","selectmCmscReqElec"];
+var objs = [CMSC,MATH,SCIENCE,cmscElective,cmscElectiveOther];
+for (var i = 0; i < items.length; i++) {
+		addClasses(items[i],objs[i]);
+}

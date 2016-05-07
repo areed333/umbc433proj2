@@ -22,9 +22,8 @@ just allowed = true for that text
 
 
 
-// some courses only available to seniors etc
-i.e 427
-but only one class...
+// weird classes:
 
-
-// add math requirements to prereq
+447: 4XX CLASS
+352: ONE CMSC COURSE
+427: SENIORS ONly
