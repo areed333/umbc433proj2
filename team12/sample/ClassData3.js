@@ -40,14 +40,16 @@ var CMSC = [
     {
       "type": "CMSC",
       "number": 331,
-      "prereq": ["CMSC 203"
+      "prereq": [
+        "CMSC 203"
       ],
       "unlock": 2
     },
     {
       "type": "CMSC",
       "number": 341,
-      "prereq": ["CMSC 203"
+      "prereq": [
+        "CMSC 203"
       ],
       "unlock": 2
     },
@@ -154,7 +156,7 @@ var cmscElective = [
       "prereq": [
         "MATH 152", 
         "MATH 221", 
-        "CMSC 341 "
+        "CMSC 341"
       ],
       "unlock": 1
     },
