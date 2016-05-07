@@ -126,7 +126,7 @@ $instance = new Common(TRUE);
 $instance->connect("ejohn3");
 
 
-// Since mysql_query() didn't work by it's lonesome, we have a sweet insert function here.
+// Since mysql_query() didn't work by it's glonesome, we have a sweet insert function here.
 function mysql_insert($table, $inserts) {
     $values = array_map('mysql_real_escape_string', array_values($inserts));
     $keys = array_keys($inserts);
@@ -266,8 +266,11 @@ mysql_insert('proj2', array(
 
 echo("<fieldset>");
 echo ("<legend> Let's take a look at what your options are for next semester!! </legend>");
-$classArray = explode(',', $classes_core_string);
+$classArray = explode(',', $classes_mathstat_string);
 echo($classArray[0]);
+// $str = $classes_mathstat_string;
+$str = array($classes_core_string, $classes_mathstat_string, $classes_sci_string, $classes_elec_string,
+		$classes_other_string);
 //echo("test");
 /*---------------------------------
 /       MATH COURSES CHECK!       /
@@ -327,7 +330,14 @@ echo("</fieldset><br>");
 echo("<fieldset>");
 echo("<legend>Required Science Track (Either BIOL100 + BIOL300, or BIOL141 + BIOL142, or CHEM101 + CHEM102, 
 or PHYS121 + PHYS122):</legend>");
-
+?> 
+<script type="text/javascript" src="phpPrint.js"></script>
+<script type="text/javascript">
+	// var str = "<?php echo $str ?>";
+	var str = <?php echo '["' . implode('", "', $str) . '"]' ?>;
+	sciClass(str); 
+</script>
+<?php
 //Option 0: No science track has been started.
 	if($_GET["BIOL100"]!=TRUE && $_GET["BIOL141"]!=TRUE && $_GET["CHEM101"]!=TRUE && $_GET["PHYS121"]!=TRUE) 
 {
