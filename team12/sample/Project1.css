@@ -31,13 +31,6 @@ h2 {
 	overflow:hidden;
 	height:1050;
 }
-#selectm
-{
-	font-size:20px;
-	font-family:"Courier New", Monospace;
-	width:100%;
-	height: 150px;
-}
 #selectCmsc
 {
 	font-size:20px;
@@ -67,6 +60,41 @@ h2 {
 	height: 150px;
 }
 #selectmCmscReqElec
+{
+	font-size:20px;
+	font-family:"Courier New", Monospace;
+	width:100%;
+	height: 150px;
+}
+#selectCmscL
+{
+	font-size:20px;
+	font-family:"Courier New", Monospace;
+	width:100%;
+	height: 150px;
+}
+#selectmMathL
+{
+	font-size:20px;
+	font-family:"Courier New", Monospace;
+	width:100%;
+	height: 150px;
+}
+#selectmScienceL
+{
+	font-size:20px;
+	font-family:"Courier New", Monospace;
+	width:100%;
+	height: 150px;
+}
+#selectmCmscElecL
+{
+	font-size:20px;
+	font-family:"Courier New", Monospace;
+	width:100%;
+	height: 150px;
+}
+#selectmCmscReqElecL
 {
 	font-size:20px;
 	font-family:"Courier New", Monospace;
