@@ -1,3 +1,9 @@
+#update 5/7 4:23pm
+- check out printPhp.js
+- this file will print all the items in .php
+- no need for php to print, printPhp.js is easier
+- printPhp.js takes all classes selected as an array of strings
+
 #update 5/6 7:43pm
 - first page done
 - second page, **easy to reduce**
