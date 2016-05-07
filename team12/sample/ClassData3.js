@@ -83,6 +83,7 @@ var CMSC = [
       "number": 441,
       "prereq": [
         "CMSC 341",
+        "MATH 152",
         "STAT 355"
       ],
       "unlock": 1
