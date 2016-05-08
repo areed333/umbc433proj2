@@ -14,7 +14,6 @@ Name: Project 1 HTML File
 	<div class='wrap'>
 		<!--<div class='left'></div>-->
 		<div class='center'>
-        
             	<img src="umbc50.jpg">
 			<h1>
                 Computer Science Advising Form
@@ -60,7 +59,7 @@ Name: Project 1 HTML File
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredCMSCLeft,document.documentForm.requiredCMSCRight)">
                             <br>&nbsp;<br>
-							<br>Required Math Courses:<br>
+							<br>Required Math Courses:<br>s
 							<select multiple id="selectmMath" name="requiredMATHLeft">
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredMATHLeft,document.documentForm.requiredMATHRight)">
@@ -335,6 +334,17 @@ Name: Project 1 HTML File
 						selection2.options[selection2.length] = newRow;
 						selection1.options[i]=null;
 						document.getElementById(selectionID).checked = false;
+
+						// remove unlocked classes
+						// grab the classes whose prereqs contain this class
+						cs = jQuery.grep(CMSC, function(classObj) {
+						  return ($.inArray(selectionText, classObj.prereq) >= 0);
+						});
+						for (var i = 0; i < cs.length; i++) {
+							cs[i]
+						}
+
+
 					}
 				} catch (err) {window.alert(err);}
 			}
@@ -369,6 +379,11 @@ Name: Project 1 HTML File
 			safeText = unsafeText.replace(';', "SEMICOLON");
 			document.getElementById("commentArea").text = safeText;
 		}
+
+		function removeFromBox(){
+
+		}
+
 	</script>
 </body>
 </html>

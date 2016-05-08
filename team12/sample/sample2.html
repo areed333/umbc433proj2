@@ -56,27 +56,35 @@ Name: Project 1 HTML File
 						<div id="LeftDiv" class="float-left">
                         	<!--This is the section for courses the student selects as untaken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
 							Required Computer Science Courses:<br>
-							<select multiple id="selectCmsc" name="requiredCMSCLeft">
+							<select multiple class = "leftBox" id="cmscOptions" name="cmscOptions">
 							</select>
-							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredCMSCLeft,document.documentForm.requiredCMSCRight)">
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmscOptions','selectedCmsc')">
+                            
                             <br>&nbsp;<br>
+							
 							<br>Required Math Courses:<br>
-							<select multiple id="selectmMath" name="requiredMATHLeft">
+							<select multiple class = "leftBox" id="mathOptions" name="mathOptions">
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredMATHLeft,document.documentForm.requiredMATHRight)">
+                            
                             <br>&nbsp;<br>
+							
 							<br>Required Science Courses (1 Track):<br>
-							<select multiple id="selectmScience" name="requiredSCILeft">				
+							<select multiple class = "leftBox" id="scienceOptions" name="scienceOptions">				
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredSCILeft,document.documentForm.requiredSCIRight)">
+
                             <br>&nbsp;<br>
+							
 							<br>Required Computer Science Electives (2 Required):<br>
-							<select multiple id="selectmCmscElec" name="electivesCMSCLeft">
+							<select multiple class = "leftBox" id="cmscReqElecOptions" name="cmscReqElecOptions">
 							</select>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.electivesCMSCLeft,document.documentForm.electivesCMSCRight)">
+
                             <br>&nbsp;<br>
+							
 							<br>Other Computer Science Electives:<br>
-							<select multiple id="selectmCmscReqElec" name="electivesOtherLeft">
+							<select multiple class = "leftBox" id="cmscElecOptions" name="cmscElecOptions">
 							</select><br>
 							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.electivesOtherLeft,document.documentForm.electivesOtherRight)">
                             <br>&nbsp;<br>
@@ -85,29 +93,38 @@ Name: Project 1 HTML File
 						<div id="RightDiv" class="float-right">
                         	<!--This is the section for courses the student selects as taken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
 							&nbsp;<br>
-							<select multiple id="selectCmscL" name="requiredCMSCRight">
+							<select multiple id="selectedCmsc" name="selectedCmsc">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredCMSCRight,document.documentForm.requiredCMSCLeft)">
+                            
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple id="selectmMathL" name="requiredMATHRight">
+							
+							<select multiple class = "rightBox" id="selectedMath" name="selectedMath">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredMATHRight,document.documentForm.requiredMATHLeft)">
+                            
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple id="selectmScienceL" name="requiredSCIRight">
+							
+							<select multiple class = "rightBox" id="selectedScience" name="selectedScience">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredSCIRight,document.documentForm.requiredSCILeft)">
+                           
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple id="selectmCmscElecL" name="electivesCMSCRight">
+							
+							<select multiple class = "rightBox" id="selectedCmscReqElec" name="selectedCmscReqElec">
 							</select>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesCMSCRight,document.documentForm.electivesCMSCLeft)">
+                           
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
-							<select multiple id="selectmCmscReqElecL" name="electivesOtherRight">
+							
+							<select multiple class = "rightBox" id="selectedCmscElec" name="selectedCmscElec">
 							</select><br>
 							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesOtherRight,document.documentForm.electivesOtherLeft)">
+                            
                             <br>&nbsp;<br>
 						</div>
 						<br>
@@ -216,6 +233,18 @@ Name: Project 1 HTML File
 	<script language="javascript">
 		//Basically works like this: check prerequisites for selected courses -> if they are met{move and check hidden box} else {window.alert(class prerequites)}
 		//selection1 and selection2 will be in the format document.formName.selectMultipleName
+
+		function getSelectedOption(optionBoxDom){
+
+		}
+
+		function selectClass(fromID,toID){
+			var fromDom = document.getElementById(fromID);
+			var toDom = document.getElementById(toID);
+			$selectedOption = $( fromID + " option:selected" ).text();
+			console.log($selectedOption);
+		}
+
 		function moveRowsRight(selection1, selection2) {
 			var selectionID = '';
 			var selectionText = '';
@@ -256,21 +285,18 @@ Name: Project 1 HTML File
 						var preReqArray = classObj[objID].prereq;
 						//console.log("preReq: " + preReqArray);
 
-
 						//By default all class prerequites are not met
 						
 						//PREREQS -- Allow a class to be added if the prerequisites have been met. this is sorted the same was as the display page, courses are grouped by section. use the comments for navigation
 
-
 						var multiReq = 0; // # of times a class in right column is in PREREQ[] array of classSelected
 						var classSelected = selection1.options[i].text; // classSelected
-						var cmsc = document.getElementById("selectCmscL");
-						var math = document.getElementById("selectmMathL");
-						var science = document.getElementById("selectmScienceL");
-						var cmscElec = document.getElementById("selectmCmscElecL");
-						var cmscElecReq = document.getElementById("selectmCmscReqElecL");
-						//var selection = [(document.getElementById("selectCmsc")),(document.getElementById("selectmMath")),(document.getElementById("selectmScience"))(document.getElementById("selectmCmscElec")),(document.getElementById("selectmCmscReqElec")),];
-						//console.log("OPTIONS"+cmscElecReq.options[0].text);
+						var cmsc = document.getElementById("selectedCmsc");
+						var math = document.getElementById("selectedMath");
+						var science = document.getElementById("selectedScience");
+						var cmscElec = document.getElementById("selectedCmscElec");
+						var cmscElecReq = document.getElementById("selectedCmscReqElec");
+
 						var selection = [cmsc,math,science,cmscElec,cmscElecReq];
 						// loop through each PREREQ[] of classSelected , and loop through each right column item 
 						// checks if PREREQ's are met

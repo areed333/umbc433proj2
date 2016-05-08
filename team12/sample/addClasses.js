@@ -7,7 +7,8 @@ function addClasses(item,obj) {
 		select.appendChild(opt);
 	}
 }
-var items = ["selectCmsc","selectmMath","selectmScience","selectmCmscElec","selectmCmscReqElec"];
+var items = ["cmscOptions","mathOptions","scienceOptions",
+			"cmscReqElecOptions","cmscElecOptions"];
 var objs = [CMSC,MATH,SCIENCE,cmscElective,cmscElectiveOther];
 for (var i = 0; i < items.length; i++) {
 		addClasses(items[i],objs[i]);
