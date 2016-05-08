@@ -215,7 +215,6 @@ Name: Project 1 HTML File
 				<input type="submit" value="Submit" onClick="scrubForm()">
 
 			</form>
-			<script type="text/javascript" src="addClasses.js"></script>
 
 			<br>
 			<br>
@@ -230,19 +229,26 @@ Name: Project 1 HTML File
         <!--<div class='right'></div>-->
 	</div>
 
+	<script type="text/javascript" src = "ClassDatabase.js"></script>
+	<script type="text/javascript" src="addClasses.js"></script>
+
 	<script language="javascript">
+
+		$(function() {
+			loadAndParseFile();
+		});
+
+		function onLoaded(){
+			generateOptions();
+		}
 		//Basically works like this: check prerequisites for selected courses -> if they are met{move and check hidden box} else {window.alert(class prerequites)}
 		//selection1 and selection2 will be in the format document.formName.selectMultipleName
-
-		function getSelectedOption(optionBoxDom){
-
-		}
 
 		function selectClass(fromID,toID){
 			var fromDom = document.getElementById(fromID);
 			var toDom = document.getElementById(toID);
-			$selectedOption = $( fromID + " option:selected" ).text();
-			console.log($selectedOption);
+			
+			var selectedOption = fromDom.value;  // ex. CMSC 201
 		}
 
 		function moveRowsRight(selection1, selection2) {

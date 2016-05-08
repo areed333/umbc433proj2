@@ -1,15 +1,26 @@
-function addClasses(item,obj) {
-	select = document.getElementById(item);
-	for (var i = 0; i < obj.length; i++) { 
-		var opt = document.createElement('option');
-		opt.value = obj[i].type+obj[i].number;
-		opt.innerHTML = obj[i].type +" "+ obj[i].number;
-		select.appendChild(opt);
+function addClasses(domID,classArray) {
+	selectionDOM = document.getElementById(domID);
+
+	for(var key in classArray){
+		var klass = classArray[key];
+
+		var optionDOM = document.createElement('option');
+		optionDOM.value = klass.indexStr;
+		optionDOM.innerHTML = klass.type +" "+ klass.number;
+		
+		selectionDOM.appendChild(optionDOM);
 	}
 }
-var items = ["cmscOptions","mathOptions","scienceOptions",
-			"cmscReqElecOptions","cmscElecOptions"];
-var objs = [CMSC,MATH,SCIENCE,cmscElective,cmscElectiveOther];
-for (var i = 0; i < items.length; i++) {
-		addClasses(items[i],objs[i]);
+
+function generateOptions(){
+
+	console.log("generate options");
+
+	var domIDs = ["cmscOptions","mathOptions","scienceOptions",
+				"cmscReqElecOptions","cmscElecOptions"];
+	var objs = [CMSC,MATH,SCIENCE,CMSC_REQ_ELEC,CMSC_ELEC];
+
+	for (var i = 0; i < domIDs.length; i++) {
+		addClasses(domIDs[i],objs[i]);
+	}
 }
