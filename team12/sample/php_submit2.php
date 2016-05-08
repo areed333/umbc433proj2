@@ -194,29 +194,29 @@ $classesChosen = array($classes_core_string, $classes_mathstat_string, $classes_
 <legend> Let's take a look at what your options are for next semester!! </legend>
 <br>
 
-<fieldset id=fMath>
+<fieldset id="fMath">
 <legend>From required Math Courses (MATH151, MATH152, MATH221):</legend>
 </fieldset><br>
 
-<fieldset id=fStat>
+<fieldset id="fStat">
 <legend>Required Statistics Course (STAT355):</legend>
 </fieldset><br>
 
-<fieldset id=fSci>
+<fieldset id="fSci">
 <legend>Required Science Track (Either BIOL100 + BIOL300, or BIOL141 + BIOL142, or CHEM101 + CHEM102, 
 or PHYS121 + PHYS122):</legend>
 </fieldset><br>
 
-<fieldset id=fCsCore>
+<fieldset id="fCsCore">
 <legend>Required Core Computer Science Courses (CMSC201, CMSC202, CMSC203, CMSC313, 
 CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 </fieldset><br>
 
-<fieldset id=fWrit>
+<fieldset id="fWrit">
 <legend>Required Writing Intensive Computer Science Course (CMSC304):</legend>
 </fieldset><br>
 
-<fieldset id=fCsElec>
+<fieldset id="fCsElec">
 <legend>Computer Science Electives - Four Total:</legend>
 Choose two from CMSC426, CMSC431, CMSC435, CMSC445, 
 CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose 

@@ -2,6 +2,7 @@
 	console.log("all classes chosen:");
 	console.log(classesChosen);
 
+<<<<<<< Updated upstream
 	// // add text to each var...
 	// var test = document.getElementById('fMath');
 	// test.insertAdjacentHTML('afterBegin', "thisis a test<br>testh2");
@@ -45,6 +46,60 @@ function cmscElectives(){
 
 }
 
+=======
+	// add text to each var...
+	var test = document.getElementById('fMath');
+	test.insertAdjacentHTML('afterBegin', "this is a test<br>testh2");
+
+	cmscElectives();
+
+
+	function cmscElectives(){
+
+		var cmscElectives = (classesChosen[3].replace(/\s+/g, '').split(',');
+		
+		var difference = $(classes_elec).not(cmscElectives).get();
+		
+		
+		
+		//console.log(difference);
+
+		var textToInsert = ".You could take ";
+
+		for (var i=0; i < difference; i++){
+
+			textToInsert += ".You could take "
+			
+			textToInsert += ("<b>" + difference[i] + "</b>" + ": Desc<br>");
+
+			var objID = $.grep(Object.keys(CMSC), function(#){
+
+				return CMSC[k].number == getClassNumber[i]; })
+
+			if (typeof objID !== "undefined") {
+
+				var titleOfClass = CMSC[objID].title;
+
+				textToInsert += ": " + titleOfClass + "<br>"
+
+			}
+
+			else{
+
+				textToInsert += ": " + "DOES NOT EXIST" + "<br>";
+
+			}
+
+			//console.log(titleOfClass);
+
+		}
+
+		var insertHtml = document.getElementById("fCsElec");
+
+		insertHtml = insertAdjacentHTML("afterBegin", textToInsert);
+
+	}
+>>>>>>> Stashed changes
 
 
 
@@ -60,6 +115,7 @@ function cmscElectives(){
 	// test.innerHTML = "test htis<br>tet2";
 	// document.getElementById('fMath').appendChild(test);
 	// document.getElementById('fMath').appendChild(test);
+
 
 
 // for each [i] in array ,delimeter it by commas. 
@@ -89,3 +145,11 @@ function cmscElectives(){
 // Then, choose any two additional 400-level Computer Science Courses as a 
 // technical electives. Note that CMSC404 and 495-499 do not qualify for this 
 // requirement. However, any from the previous list do qualify.
+
+
+
+
+
+
+
+
