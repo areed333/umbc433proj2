@@ -2,9 +2,58 @@
 	console.log("all classes chosen:");
 	console.log(classesChosen);
 
-	// add text to each var...
-	var test = document.getElementById('fMath');
-	test.insertAdjacentHTML('afterBegin', "thisis a test<br>testh2");
+	// // add text to each var...
+	// var test = document.getElementById('fMath');
+	// test.insertAdjacentHTML('afterBegin', "thisis a test<br>testh2");
+	// cmscElectives();
+
+function cmscElectives(){
+	// array of elective classes without space, comma delimated
+	var cmscElectives = (classesChosen[3].replace(/\s+/g, '')).split(',');
+
+	// subtract classes chosen from list of possible electives
+	var difference = $(classes_elec).not(cmscElectives).get();
+
+
+	// create the message to be inserted:
+	var textToInsert = "Choose two from CMSC426, CMSC431, CMSC435, CMSC445,"+ 
+"CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose"+
+"any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404"+
+"and 495-499 do not qualify for this requirement. However, any from the previous list do qualify.<br><br>";
+
+
+
+
+	for(var i=0;i<difference.length;i++){
+		textToInsert += "-You could take "
+		textToInsert += ("<b>"+difference[i]+"</b>");
+
+		// get desc from obj using id
+		var objID = $.grep(Object.keys(CMSC), function (k) { 
+			return CMSC[k].number == difference[i].substring(4); })
+		if(typeof CMSC[objID] !== "undefined"){
+  			var titleOfClass = CMSC[objID].title;
+  			textToInsert += ": "+ titleOfClass +"<br>";
+				} 
+		else{
+			textToInsert += ": "+ "DOES NOT EXIST" +"<br>";
+			}
+		}
+
+	var insertHtml = document.getElementById('fCsElec');
+	insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 	// var test = document.createElement('div');
