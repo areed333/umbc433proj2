@@ -1,3 +1,7 @@
+#update 5/7 10:55pm
+- quick link to test proj:
+http://userpages.umbc.edu/~ejohn3/CMSC433/proj2v1/post_submit.php?firstname=ksl&lastname=kls&ID=kk19299&email=dkl%40kld.com&year=1&comments=&requiredCMSCLeft=CMSC345&MATH151=on&BIOL100=on&BIOL301=on&BIOL141=on&BIOL142=on
+
 #update 5/7 4:23pm
 - check out printPhp.js
 - this file will print all the items in .php
