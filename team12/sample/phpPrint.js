@@ -1,7 +1,16 @@
-function sciClass(scclass){
+
 	console.log("all classes chosen:");
-	console.log(scclass);
-};
+	console.log(classesChosen);
+
+	// add text to each var...
+	var test = document.getElementById('fMath');
+	test.insertAdjacentHTML('afterBegin', "thisis a test<br>testh2");
+
+
+	// var test = document.createElement('div');
+	// test.innerHTML = "test htis<br>tet2";
+	// document.getElementById('fMath').appendChild(test);
+	// document.getElementById('fMath').appendChild(test);
 
 
 // for each [i] in array ,delimeter it by commas. 

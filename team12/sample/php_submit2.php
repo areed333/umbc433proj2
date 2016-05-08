@@ -110,7 +110,7 @@ $student_comments = $_GET["comments"];
 //Loop to construct CMSC Core Classes String
 //--------------------------------------------
 for($class_loop_ctr=0; $class_loop_ctr < count($classes_core); $class_loop_ctr++) {
-	if ($_GET[$classes_core[$class_loop_ctr]]==TRUE) {
+	if (isset($_GET[$classes_core[$class_loop_ctr]])==TRUE) {
 		$classes_core_string .= $classes_core[$class_loop_ctr];
 		$classes_core_string .= ", ";
 	}	
@@ -125,7 +125,7 @@ $classes_core_string = substr($classes_core_string, 0, -2);
 //Loop to construct Math / Statistics String
 //-------------------------------------------
 for($class_loop_ctr=0; $class_loop_ctr < count($classes_mathstat); $class_loop_ctr++) {
-	if ($_GET[$classes_mathstat[$class_loop_ctr]]==TRUE) {
+	if (isset($_GET[$classes_mathstat[$class_loop_ctr]])==TRUE) {
 		$classes_mathstat_string .= $classes_mathstat[$class_loop_ctr];
 		$classes_mathstat_string .= ", ";
 	}	
@@ -140,7 +140,7 @@ $classes_mathstat_string = substr($classes_mathstat_string, 0, -2);
 //   Loop to construct Sciences String
 //------------------------------------------
 for($class_loop_ctr=0; $class_loop_ctr < count($classes_science); $class_loop_ctr++) {
-	if ($_GET[$classes_science[$class_loop_ctr]]==TRUE) {
+	if (isset($_GET[$classes_science[$class_loop_ctr]])==TRUE) {
 		$classes_sci_string .= $classes_science[$class_loop_ctr];
 		$classes_sci_string .= ", ";
 	}	
@@ -155,7 +155,7 @@ $classes_sci_string = substr($classes_sci_string, 0, -2);
 // Loop to construct CompSci Electives String
 //------------------------------------------
 for($class_loop_ctr=0; $class_loop_ctr < count($classes_elec); $class_loop_ctr++) {
-	if ($_GET[$classes_elec[$class_loop_ctr]]==TRUE) {
+	if (isset($_GET[$classes_elec[$class_loop_ctr]])==TRUE) {
 		$classes_elec_string .= $classes_elec[$class_loop_ctr];
 		$classes_elec_string .= ", ";
 	}	
@@ -170,7 +170,7 @@ $classes_elec_string = substr($classes_elec_string, 0, -2);
 // Loop to construct "OTHER" CompSci String
 //------------------------------------------
 for($class_loop_ctr=0; $class_loop_ctr < count($classes_other_cmsc); $class_loop_ctr++) {
-	if ($_GET[$classes_other_cmsc[$class_loop_ctr]]==TRUE) {
+	if (isset($_GET[$classes_other_cmsc[$class_loop_ctr]])==TRUE) {
 		$classes_other_string .= $classes_other_cmsc[$class_loop_ctr];
 		$classes_other_string .= ", ";
 	}	
@@ -184,7 +184,7 @@ $classes_other_string = substr($classes_other_string, 0, -2);
 
 $classArray = explode(',', $classes_mathstat_string);
 // $str = $classes_mathstat_string;
-$str = array($classes_core_string, $classes_mathstat_string, $classes_sci_string, $classes_elec_string,
+$classesChosen = array($classes_core_string, $classes_mathstat_string, $classes_sci_string, $classes_elec_string,
 		$classes_other_string);
 //echo("test");
 
@@ -194,29 +194,29 @@ $str = array($classes_core_string, $classes_mathstat_string, $classes_sci_string
 <legend> Let's take a look at what your options are for next semester!! </legend>
 <br>
 
-<fieldset>
+<fieldset id=fMath>
 <legend>From required Math Courses (MATH151, MATH152, MATH221):</legend>
 </fieldset><br>
 
-<fieldset>
+<fieldset id=fStat>
 <legend>Required Statistics Course (STAT355):</legend>
 </fieldset><br>
 
-<fieldset>
+<fieldset id=fSci>
 <legend>Required Science Track (Either BIOL100 + BIOL300, or BIOL141 + BIOL142, or CHEM101 + CHEM102, 
 or PHYS121 + PHYS122):</legend>
 </fieldset><br>
 
-<fieldset>
+<fieldset id=fCsCore>
 <legend>Required Core Computer Science Courses (CMSC201, CMSC202, CMSC203, CMSC313, 
 CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 </fieldset><br>
 
-<fieldset>
+<fieldset id=fWrit>
 <legend>Required Writing Intensive Computer Science Course (CMSC304):</legend>
 </fieldset><br>
 
-<fieldset>
+<fieldset id=fCsElec>
 <legend>Computer Science Electives - Four Total:</legend>
 Choose two from CMSC426, CMSC431, CMSC435, CMSC445, 
 CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose 
@@ -227,13 +227,18 @@ and 495-499 do not qualify for this requirement. However, any from the previous 
 </fieldset>
 
 
-<script type="text/javascript" src="phpPrint.js"></script>
-<script type="text/javascript">
-	// var str = "<?php echo $str ?>";
-	var str = <?php echo '["' . implode('", "', $str) . '"]' ?>;
-	sciClass(str); 
-</script>
 
+<script type="text/javascript">
+	var classesChosen = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
+	var classes_core = <?php echo '["' . implode('", "', $classes_core) . '"]' ?>;
+	var classes_mathstat = <?php echo '["' . implode('", "', $classes_mathstat) . '"]' ?>;
+	var classes_science = <?php echo '["' . implode('", "', $classes_science) . '"]' ?>;
+	var classes_elec = <?php echo '["' . implode('", "', $classes_elec) . '"]' ?>;
+	var classes_other_cmsc = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
+
+
+</script>
+<script type="text/javascript" src="phpPrint.js"></script>
 <div id="footer">
             	&#169; UMBC College of Computer Science and Electrical Engineering, 2016 <br>
                 Contact Doug Bennett, Tim Maher, or Naomi Schumacher with problems
