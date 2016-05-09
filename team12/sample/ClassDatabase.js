@@ -14,7 +14,17 @@ class Class {
 		this.type = type;
 		this.number = number;
 		this.indexStr = type + number;
+		this.spacedIndexStr = type + " " + number;
 		this.prereq = prereq; // this var won't change  ==> Max Hp
+		this.optionView = this.initView();
+		this.parentDOM = null;
+	}
+
+	initView(){
+		var option = document.createElement("option");
+		option.text = this.spacedIndexStr;
+		option.value = this.spacedIndexStr;
+		return option;
 	}
 }
 
@@ -49,28 +59,27 @@ function initDatabase(){
 
 	for (var i = 0; i < classDataRaw["CMSC"].length; i++) {
 		var klass = createClassFromRawData(classDataRaw["CMSC"][i]);
-		CMSC[klass.indexStr] = klass;
+		CMSC[klass.type + " " + klass.number] = klass;
 	}
 	for (var i = 0; i < classDataRaw["CMSC_REQ_ELEC"].length; i++) {
 		var klass = createClassFromRawData(classDataRaw["CMSC_REQ_ELEC"][i]);
-		CMSC_REQ_ELEC[klass.indexStr] = klass;
+		CMSC_REQ_ELEC[klass.type + " " + klass.number] = klass;
 	}
 	for (var i = 0; i < classDataRaw["CMSC_ELEC"].length; i++) {
 		var klass = createClassFromRawData(classDataRaw["CMSC_ELEC"][i]);
-		CMSC_ELEC[klass.indexStr] = klass;
+		CMSC_ELEC[klass.type + " " + klass.number] = klass;
 	}
 	for (var i = 0; i < classDataRaw["MATH"].length; i++) {
 		var klass = createClassFromRawData(classDataRaw["MATH"][i]);
-		MATH[klass.indexStr] = klass;
+		MATH[klass.type + " " + klass.number] = klass;
 	}
 	for (var i = 0; i < classDataRaw["SCIENCE"].length; i++) {
 		var klass = createClassFromRawData(classDataRaw["SCIENCE"][i]);
-		SCIENCE[klass.indexStr] = klass;
+		SCIENCE[klass.type + " " + klass.number] = klass;
 	}
 
 	console.log ("class database initialized");
 	console.log ("=============end==============");
-
 
 	onLoaded();
 }
@@ -84,6 +93,21 @@ function createClassFromRawData(data){
 	return klass;
 }
 
+function lookUpClass(key){
 
+	if (key in CMSC)
+		return CMSC[key];
+	else if (key in CMSC_REQ_ELEC)
+		return CMSC_REQ_ELEC[key];
+	else if (key in CMSC_ELEC)
+		return CMSC_ELEC[key];
+	else if (key in MATH)
+		return MATH[key];
+	else if (key in SCIENCE)
+		return SCIENCE[key];
+}
 
+function checkCategory(key){
+	
+}
 
