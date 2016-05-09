@@ -21,7 +21,7 @@ Name: Project 1 HTML File
 			</h1>
 			<h2>Please fill out the form below before coming to your advising appointment.</h2>
 			<!--start form-->
-			<form action="post_submit.php" name="documentForm" method="get">
+			<form name="documentForm" action="test.php" method="post" >
             	<!--this fieldset contains the student personal information-->
 				<fieldset>
 					<legend>Personal information:</legend>
@@ -56,74 +56,74 @@ Name: Project 1 HTML File
 						<div id="LeftDiv" class="float-left">
                         	<!--This is the section for courses the student selects as untaken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
 							Required Computer Science Courses:<br>
-							<select multiple class = "leftBox" id="cmscOptions" name="cmscOptions">
+							<select multiple class = "leftBox" id="cmsc" name="cmscOptions">
 							</select>
-							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmscOptions','selectedCmsc')">
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmsc')">
                             
                             <br>&nbsp;<br>
 							
 							<br>Required Math Courses:<br>
-							<select multiple class = "leftBox" id="mathOptions" name="mathOptions">
+							<select multiple class = "leftBox" id="math" name="mathOptions">
 							</select>
-							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredMATHLeft,document.documentForm.requiredMATHRight)">
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('math')">
                             
                             <br>&nbsp;<br>
 							
 							<br>Required Science Courses (1 Track):<br>
-							<select multiple class = "leftBox" id="scienceOptions" name="scienceOptions">				
+							<select multiple class = "leftBox" id="science" name="scienceOptions">				
 							</select>
-							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.requiredSCILeft,document.documentForm.requiredSCIRight)">
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('science')">
 
                             <br>&nbsp;<br>
 							
 							<br>Required Computer Science Electives (2 Required):<br>
-							<select multiple class = "leftBox" id="cmscReqElecOptions" name="cmscReqElecOptions">
+							<select multiple class = "leftBox" id="cmscReqElec" name="cmscReqElecOptions">
 							</select>
-							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.electivesCMSCLeft,document.documentForm.electivesCMSCRight)">
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmscReqElec')">
 
                             <br>&nbsp;<br>
 							
 							<br>Other Computer Science Electives:<br>
-							<select multiple class = "leftBox" id="cmscElecOptions" name="cmscElecOptions">
+							<select multiple class = "leftBox" id="cmscElec" name="cmscElecOptions">
 							</select><br>
-							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="moveRowsRight(document.documentForm.electivesOtherLeft,document.documentForm.electivesOtherRight)">
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmscElec')">
                             <br>&nbsp;<br>
 						</div>
 	
 						<div id="RightDiv" class="float-right">
                         	<!--This is the section for courses the student selects as taken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
 							&nbsp;<br>
-							<select multiple id="rightBox" name="selectedCmsc">
+							<select multiple class = "rightBox" id="cmsc-selected" name="cmsc-selected">
 							</select>
-							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredCMSCRight,document.documentForm.requiredCMSCLeft)">
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('cmsc')">
                             
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
 							
-							<select multiple class = "rightBox" id="selectedMath" name="selectedMath">
+							<select multiple class = "rightBox" id="math-selected" name="selectedMath">
 							</select>
-							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredMATHRight,document.documentForm.requiredMATHLeft)">
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('math')">
                             
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
 							
-							<select multiple class = "rightBox" id="selectedScience" name="selectedScience">
+							<select multiple class = "rightBox" id="science-selected" name="selectedScience">
 							</select>
-							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.requiredSCIRight,document.documentForm.requiredSCILeft)">
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('science')">
                            
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
 							
-							<select multiple class = "rightBox" id="selectedCmscReqElec" name="selectedCmscReqElec">
+							<select multiple class = "rightBox" id="cmscReqElec-selected" name="selectedCmscReqElec">
 							</select>
-							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesCMSCRight,document.documentForm.electivesCMSCLeft)">
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('cmscReqElec')">
                            
                             <br>&nbsp;<br>
 							<br>&nbsp;<br>
 							
-							<select multiple class = "rightBox" id="selectedCmscElec" name="selectedCmscElec">
+							<select multiple class = "rightBox" id="cmscElec-selected" name="selectedCmscElec">
 							</select><br>
-							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="moveRowsLeft(document.documentForm.electivesOtherRight,document.documentForm.electivesOtherLeft)">
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('cmscElec')">
                             
                             <br>&nbsp;<br>
 						</div>
@@ -133,86 +133,11 @@ Name: Project 1 HTML File
                 <!--These are a set of hidden checkboxes, each of which represents a possible course. The javascript takes care of checking and unchecking them as courses are moved back and forth above,
                	   and the user will never see these. For debugging it is useful to unmark these as hidden. Additionally, this is the only section of courses the php file checks against, the select multiples
                    are just a visual front end for the user-->
-                <fieldset hidden>
-                	<legend>DEBUG AREA: DO NOT USE</legend>
-                	<!--required CMSC courses-->
-                	<input type="checkbox" id="CMSC201" name="CMSC201">CMSC201
-                	<input type="checkbox" id="CMSC202" name="CMSC202">CMSC202
-                	<input type="checkbox" id="CMSC203" name="CMSC203">CMSC203
-                	<input type="checkbox" id="CMSC304" name="CMSC304">CMSC304
-                	<input type="checkbox" id="CMSC313" name="CMSC313">CMSC313
-                	<input type="checkbox" id="CMSC331" name="CMSC331">CMSC331
-                	<input type="checkbox" id="CMSC341" name="CMSC341">CMSC341
-                	<input type="checkbox" id="CMSC411" name="CMSC411">CMSC411
-                	<input type="checkbox" id="CMSC421" name="CMSC421">CMSC421
-                	<input type="checkbox" id="CMSC441" name="CMSC441">CMSC441
-                	<input type="checkbox" id="CMSC447" name="CMSC447">CMSC447
-                    <!--required MATH and STAT courses--><br><br>
-                	<input type="checkbox" id="MATH151" name="MATH151">MATH151
-                	<input type="checkbox" id="MATH152" name="MATH152">MATH152
-                	<input type="checkbox" id="MATH221" name="MATH221">MATH221
-                	<input type="checkbox" id="STAT355" name="STAT355">STAT355
-                    <!--SCIE track courses--><br><br>
-                	<input type="checkbox" id="BIOL100" name="BIOL100">BIOL100
-                	<input type="checkbox" id="BIOL301" name="BIOL301">BIOL301
-                	<input type="checkbox" id="BIOL141" name="BIOL141">BIOL141
-                	<input type="checkbox" id="BIOL142" name="BIOL142">BIOL142
-                	<input type="checkbox" id="CHEM101" name="CHEM101">CHEM101
-                	<input type="checkbox" id="CHEM102" name="CHEM102">CHEM102
-                	<input type="checkbox" id="PHYS121" name="PHYS121">PHYS121
-                	<input type="checkbox" id="PHYS122" name="PHYS122">PHYS122
-                    <!--required CMSC electives--><br><br>
-                	<input type="checkbox" id="CMSC426" name="CMSC426">CMSC426
-                	<input type="checkbox" id="CMSC431" name="CMSC431">CMSC431
-                	<input type="checkbox" id="CMSC435" name="CMSC435">CMSC435
-                	<input type="checkbox" id="CMSC448" name="CMSC448">CMSC448
-                	<input type="checkbox" id="CMSC451" name="CMSC451">CMSC451
-                	<input type="checkbox" id="CMSC455" name="CMSC455">CMSC455
-                	<input type="checkbox" id="CMSC456" name="CMSC456">CMSC456
-                	<input type="checkbox" id="CMSC461" name="CMSC461">CMSC461
-                	<input type="checkbox" id="CMSC471" name="CMSC471">CMSC471
-                	<input type="checkbox" id="CMSC481" name="CMSC481">CMSC481
-                	<input type="checkbox" id="CMSC483" name="CMSC483">CMSC483
-                    <!--other CMSC electives--><br><br>
-                	<input type="checkbox" id="CMSC232" name="CMSC232">CMSC232
-                	<input type="checkbox" id="CMSC291" name="CMSC291">CMSC291
-                	<input type="checkbox" id="CMSC299" name="CMSC299">CMSC299
-                	<input type="checkbox" id="CMSC352" name="CMSC352">CMSC352
-                	<input type="checkbox" id="CMSC391" name="CMSC391">CMSC391
-                	<input type="checkbox" id="CMSC404" name="CMSC404">CMSC404
-                	<input type="checkbox" id="CMSC427" name="CMSC427">CMSC427
-                	<input type="checkbox" id="CMSC432" name="CMSC432">CMSC432
-                	<input type="checkbox" id="CMSC433" name="CMSC433">CMSC433
-                	<input type="checkbox" id="CMSC436" name="CMSC436">CMSC436
-                	<input type="checkbox" id="CMSC437" name="CMSC437">CMSC437
-                	<input type="checkbox" id="CMSC442" name="CMSC442">CMSC442
-                	<input type="checkbox" id="CMSC443" name="CMSC443">CMSC443
-                	<input type="checkbox" id="CMSC444" name="CMSC444">CMSC444
-                	<input type="checkbox" id="CMSC446" name="CMSC446">CMSC446
-                	<input type="checkbox" id="CMSC452" name="CMSC452">CMSC452
-                	<input type="checkbox" id="CMSC453" name="CMSC453">CMSC453
-                	<input type="checkbox" id="CMSC457" name="CMSC457">CMSC457
-                	<input type="checkbox" id="CMSC465" name="CMSC465">CMSC465
-                	<input type="checkbox" id="CMSC466" name="CMSC466">CMSC466
-                	<input type="checkbox" id="CMSC473" name="CMSC473">CMSC473
-                	<input type="checkbox" id="CMSC475" name="CMSC475">CMSC475
-                	<input type="checkbox" id="CMSC476" name="CMSC476">CMSC476
-                	<input type="checkbox" id="CMSC477" name="CMSC477">CMSC477
-                	<input type="checkbox" id="CMSC478" name="CMSC478">CMSC478
-                	<input type="checkbox" id="CMSC479" name="CMSC479">CMSC479
-                	<input type="checkbox" id="CMSC484" name="CMSC484">CMSC484
-                	<input type="checkbox" id="CMSC486" name="CMSC486">CMSC486
-                	<input type="checkbox" id="CMSC487" name="CMSC487">CMSC487
-                	<input type="checkbox" id="CMSC491" name="CMSC491">CMSC491
-                	<input type="checkbox" id="CMSC493" name="CMSC493">CMSC493
-                	<input type="checkbox" id="CMSC495" name="CMSC495">CMSC495
-                	<input type="checkbox" id="CMSC498" name="CMSC498">CMSC498
-                	<input type="checkbox" id="CMSC499" name="CMSC499">CMSC499
-				</fieldset>
-
+              
 				<br><br><br>
 
-				<input type="submit" value="Submit" onClick="scrubForm()">
+				<!-- TODO: -->
+				<input type="Button" value="Submit" onClick="postData()">
 
 			</form>
 
@@ -234,23 +159,141 @@ Name: Project 1 HTML File
 
 	<script language="javascript">
 
-		$(function() {
-			loadAndParseFile();
-		});
+	$(function() {
+		loadAndParseFile();
 
-		function onLoaded(){
-			generateOptions();
+	});
+
+	// callback triggered after database initialization
+	function onLoaded(){
+		generateOptions();
+	}
+
+	var classTakenID = [];
+
+	function selectClass(selectionDomID){
+		console.log(selectionDomID);
+		var optionDom = document.getElementById(selectionDomID);
+		console.log(optionDom);
+		var selectedDom = document.getElementById(selectionDomID+"-selected");
+		var selectedOption = optionDom.value;  // ex. CMSC 201
+		console.log(selectedOption);
+		var selectedClass = lookUpClass(selectedOption);
+
+		// check prereq
+		var preReqs = selectedClass.prereq;
+		var alertMessage = selectedClass.indexStr + " requires: ";
+		var prereqNotMeet = false;
+		for (var i = 0; i < preReqs.length; i++) {
+
+			// check if prereq class is taken
+			var index = classTakenID.indexOf(preReqs[i]);
+			// prereq not taken 
+			if(index == -1){
+				prereqNotMeet = true;
+
+				// prepare alert messeage
+				alertMessage += (preReqs[i] + " ");
+			}
 		}
-		//Basically works like this: check prerequisites for selected courses -> if they are met{move and check hidden box} else {window.alert(class prerequites)}
-		//selection1 and selection2 will be in the format document.formName.selectMultipleName
-
-		function selectClass(fromID,toID){
-			var fromDom = document.getElementById(fromID);
-			var toDom = document.getElementById(toID);
+		// prereq not meet yet
+		if (prereqNotMeet) {
+			window.alert(alertMessage);
+		}
+		else{
+			// store selected class as taken
+			classTakenID.push(selectedClass.spacedIndexStr);
+			console.log("selected " + selectedClass.indexStr);
+		
+			// remove selected-option 
+			optionDom.remove(optionDom.selectedIndex);
+			//selectedClass.optionView.parentNode.removeChild(selectedClass.optionView);
 			
-			var selectedOption = fromDom.value;  // ex. CMSC 201
+			selectedDom.add(selectedClass.optionView);
+
+			sortSelection(selectedDom);
+		}
+	}
+
+	function unselectClass(selectionDomID){
+		console.log(selectionDomID);
+		var optionDom = document.getElementById(selectionDomID);
+		console.log(optionDom);
+		var selectedDom = document.getElementById(selectionDomID+"-selected");
+		var selectedOption = selectedDom.value;  // ex. CMSC 201
+		console.log(selectedOption);
+		var selectedClass = lookUpClass(selectedOption);
+
+		// move to left option box
+		selectedDom.remove(selectedDom.selectedIndex);
+		optionDom.add(selectedClass.optionView);
+
+		// remove from taken list
+		var index = this.classTakenID.indexOf(selectedClass.spacedIndexStr);
+		this.classTakenID.splice(index,1);
+
+		// recursively remove unlocked classes
+		removeUnlocked(selectedClass);
+	
+		sortSelection(optionDom);
+		console.log(classTakenID);
+	}
+
+	function removeUnlocked(classToRemove){
+		for (var i = classTakenID.length - 1; i >= 0; i--) {
+			console.log(classTakenID[i]);
+			var takenClass = lookUpClass(classTakenID[i]);
+
+			if(takenClass.prereq.indexOf(classToRemove.spacedIndexStr) != -1){
+				var parentID = takenClass.optionView.parentNode.id;
+				takenClass.optionView.parentNode.removeChild(takenClass.optionView);
+				console.log(parentID);
+				var optionDomID = parentID.split("-")[0];
+				console.log(optionDomID);
+				var optionDom = document.getElementById(optionDomID);
+				optionDom.add(takenClass.optionView);
+
+				classTakenID.splice(i,1);
+				console.log(classTakenID);
+		
+				removeUnlocked(takenClass);
+			}
+		}
+	}
+
+	function postData(){
+		var data = [];
+		var formData = new FormData();
+
+		console.log(classTakenID.length);
+		
+		for (var i = classTakenID.length - 1; i >= 0; i--) {
+			var categoryID = lookUpClass(classTakenID[i]).optionView.parentNode.id.split("-")[0];
+
+			if (categoryID in data)
+				data[categoryID] += (classTakenID[i] + ",");
+			else
+				data[categoryID] = (classTakenID[i] + ",");
 		}
 
+		for(var key in data){
+			formData.append(key,data[key]);
+		}
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) {		
+				//element.innerHTML = "uploaded!";
+				console.log(xhttp.responseText);
+			}
+		};
+
+		xhttp.open("POST", "test.php", true);
+		xhttp.send(formData);
+	}
+
+	//Basically works like this: check prerequisites for selected courses -> if they are met{move and check hidden box} else {window.alert(class prerequites)}
+	//selection1 and selection2 will be in the format document.formName.selectMultipleName
 		function moveRowsRight(selection1, selection2) {
 			var selectionID = '';
 			var selectionText = '';

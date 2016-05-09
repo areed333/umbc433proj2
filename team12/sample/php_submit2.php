@@ -61,16 +61,14 @@ $classes_mathstat = array("MATH151","MATH152","MATH221","STAT355");
 $classes_science = array("BIOL100","BIOL301","BIOL141","BIOL142","CHEM101","CHEM102","PHYS121",
 	"PHYS122");
 	
-$classes_elec = array("CMSC426","CMSC427", "CMSC432", "CMSC433", "CMSC435", "CMSC436", "CMSC437", "CMSC442",
+$classes_elec = array("CMSC427", "CMSC432", "CMSC 433", "CMSC435", "CMSC436", "CMSC437", "CMSC442",
 		"CMSC443", "CMSC444", "CMSC446", "CMSC448", "CMSC452", "CMSC453", "CMSC455", "CMSC457", 
 		"CMSC461", "CMSC465", "CMSC471", "CMSC481", "CMSC483", 
 		"CMSC466", "CMSC473", "CMSC475", "CMSC476", "CMSC477", "CMSC478", "CMSC479", "CMSC484",
 		"CMSC486", "CMSC487", "CMSC491", "CMSC493");
-
 $classes_other_cmsc = array("CMSC232", "CMSC291", "CMSC299", "CMSC352", "CMSC391", "CMSC456",
 	"CMSC495", "CMSC498", "CMSC499");
 		
-$classes_4xx = array("CMSC441","CMSC447","CMSC426","CMSC431","CMSC435","CMSC448","CMSC451","CMSC455","CMSC456","CMSC461","CMSC471","CMSC481","CMSC483","CMSC427","CMSC432","CMSC433","CMSC436","CMSC437","CMSC442","CMSC443","CMSC444","CMSC446","CMSC452","CMSC453","CMSC457","CMSC465","CMSC466","CMSC473","CMSC475","CMSC476","CMSC477","CMSC478","CMSC479","CMSC484","CMSC486","CMSC487","CMSC493");
 $student_id = "n/a";
 $first_name = "n/a";
 $last_name = "n/a";
@@ -220,13 +218,15 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 
 <fieldset id="fCsElec">
 <legend>Computer Science Electives - Four Total:</legend>
+Choose two from CMSC426, CMSC431, CMSC435, CMSC445, 
+CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose 
+any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404 
+and 495-499 do not qualify for this requirement. However, any from the previous list do qualify.<br><br>
 </fieldset><br>
 
 </fieldset>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="ClassData.js"></script>
-	<script type="text/javascript" src="ClassData4.js"></script>
+
+
 
 <script type="text/javascript">
 	var classesChosen = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
@@ -235,7 +235,6 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 	var classes_science = <?php echo '["' . implode('", "', $classes_science) . '"]' ?>;
 	var classes_elec = <?php echo '["' . implode('", "', $classes_elec) . '"]' ?>;
 	var classes_other_cmsc = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
-	var classes_4xx = <?php echo '["' . implode('", "', $classes_4xx) . '"]' ?>;
 
 
 </script>
