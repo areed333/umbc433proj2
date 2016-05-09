@@ -83,7 +83,3 @@ function createClassFromRawData(data){
 
 	return klass;
 }
-
-
-
-
