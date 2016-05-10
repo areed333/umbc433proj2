@@ -225,7 +225,7 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 </fieldset>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="ClassData.js"></script>
+	<script type="text/javascript" src="data/ClassData_phpPrint.js"></script>
 	<script type="text/javascript" src="ClassData4.js"></script>
 
 <script type="text/javascript">

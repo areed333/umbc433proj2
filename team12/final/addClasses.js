@@ -3,12 +3,7 @@ function addClasses(domID,classArray) {
 
 	for(var key in classArray){
 		var klass = classArray[key];
-
-		var optionDOM = document.createElement('option');
-		optionDOM.value = klass.indexStr;
-		optionDOM.innerHTML = klass.type +" "+ klass.number;
-		
-		selectionDOM.appendChild(optionDOM);
+		selectionDOM.add(klass.optionView);
 	}
 }
 
