@@ -170,6 +170,10 @@ $classesChosen = array($classes_core_string, $classes_mathstat_string, $classes_
 or PHYS121 + PHYS122):</legend>
 </fieldset><br>
 
+<fieldset id="fStat">
+<legend>Required Statistics Course (STAT355):</legend>
+</fieldset><br>
+
 <fieldset id="fCsCore">
 <legend>Required Core Computer Science Courses (CMSC201, CMSC202, CMSC203, CMSC313, 
 CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
