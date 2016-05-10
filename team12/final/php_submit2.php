@@ -200,13 +200,13 @@ $classesChosen = array($classes_core_string, $classes_mathstat_string, $classes_
 <legend>From required Math Courses (MATH151, MATH152, MATH221):</legend>
 </fieldset><br>
 
-<fieldset id="fStat">
-<legend>Required Statistics Course (STAT355):</legend>
-</fieldset><br>
-
 <fieldset id="fSci">
 <legend>Required Science Track (Either BIOL100 + BIOL300, or BIOL141 + BIOL142, or CHEM101 + CHEM102, 
 or PHYS121 + PHYS122):</legend>
+</fieldset><br>
+
+<fieldset id="fStat">
+<legend>Required Statistics Course (STAT355):</legend>
 </fieldset><br>
 
 <fieldset id="fCsCore">
@@ -226,8 +226,8 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script type="text/javascript" src="data/ClassData_phpPrint.js"></script>
+	<script type="text/javascript" src="data/classdataFinal.js"></script>
 	<script type="text/javascript" src="ClassData4.js"></script>
-
 <script type="text/javascript">
 	var classesChosen = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
 	var classes_core = <?php echo '["' . implode('", "', $classes_core) . '"]' ?>;
