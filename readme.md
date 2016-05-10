@@ -1,3 +1,12 @@
+#update 5/10
+- **Remaining work**
+1. $_GET from sample2.html and put to database in php_submit2.php
+	- correct string names
+	- check post_submit.php for how they did it
+2. fix cmscElectives in phpPrint.js (or not idk if he will notice)
+3. create functions for stat + writing intensive in phpPrint.js
+4. documentation
+
 #update 5/7 10:55pm
 - quick link to test proj:
 http://userpages.umbc.edu/~ejohn3/CMSC433/proj2v1/post_submit.php?firstname=ksl&lastname=kls&ID=kk19299&email=dkl%40kld.com&year=1&comments=&requiredCMSCLeft=CMSC345&MATH151=on&BIOL100=on&BIOL301=on&BIOL141=on&BIOL142=on
