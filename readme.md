@@ -1,3 +1,15 @@
+#5/11 1:52am
+- **NOT DONE YET**
+- **FORGOT ABOUT SCIENCE REQUIRMENTS IN PROJ2 RUBRIC**
+- "Add functionality for checking math and science requirements - Include JavaScript here!"
+1. Documentation - Check below for rubric:
+| File | | Topic | Person |
+| --- | --- | --- |
+| something | php | y  |
+| something | php | e  |
+| something | php | a  |
+
+
 #update 5/10
 - **Remaining work**
 1. $_GET from sample2.html and put to database in php_submit2.php
