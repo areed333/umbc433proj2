@@ -150,6 +150,13 @@ function creditsTaken(chosenClass,obj){
 }
 
 function checkStat(chosenClass, id){
+	// if no classes taken
+	if(chosenClass[0] == ""){
+		var textToInsert = "<b>-No classes selected</b><br>";
+		var insertHtml = document.getElementById(id);
+		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
+		return;
+	}
 
 	if(jQuery.inArray("STAT 355", chosenClass) !== -1){
         var textToInsert = ("<b>STAT requirement MET!</b><br>");
@@ -165,6 +172,14 @@ function checkStat(chosenClass, id){
 }
  
 function checkWritingIntensive(chosenClass, id){
+	// if no classes taken
+	if(chosenClass[0] == ""){
+		var textToInsert = "<b>-No classes selected</b><br>";
+		var insertHtml = document.getElementById(id);
+		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
+		return;
+	}
+
     if(jQuery.inArray("CMSC 304", chosenClass) !== -1){
         var textToInsert = ("<b>Writing intensive requirement MET!</b><br>");
     }
