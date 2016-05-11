@@ -27,9 +27,9 @@
 	checkWritingIntensive(classSections[0], 'fWrit');
 
 	// create cmsc electives classes to take in future
-	var message = "Choose two from CMSC426, CMSC431, CMSC435, CMSC445,"+ 
-	"CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose"+
-	"any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404"+
+	var message = "Choose two from CMSC426, CMSC431, CMSC435, CMSC445, "+ 
+	"CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose "+
+	"any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404 "+
 	"and 495-499 do not qualify for this requirement. However, any from the previous list do qualify.<br><br>";
 	
 	classesToTake(classSections[3], CMSC_ELEC, classes_4xx, 'fCsElec', message);
@@ -40,7 +40,11 @@
 	var difference = $(allClassesArray).not(chosenClass).get();
 	// if all calsses taken
 	if(difference.length == 0){
-		textToInsert += "<b>-Credits completed!</b><br>";
+		if(id == "fMath"){
+			textToInsert += textToInsert += "<b>-4 credits completed!</b><br>";
+		}
+		else{
+		textToInsert += "<b>-Credits completed!</b><br>";}
 		var insertHtml = document.getElementById(id);
 		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 		return;
@@ -148,19 +152,27 @@ function creditsTaken(chosenClass,obj){
 function checkStat(chosenClass, id){
 
 	if(jQuery.inArray("STAT 355", chosenClass) !== -1){
-        console.log("Yes, STAT 355 is in the array");
+        var textToInsert = ("<b>STAT requirement MET!</b><br>");
+
  	}
     else {
-        console.log("No, STAT355 is not in the array");
+       	var textToInsert = ("<b>-You could take STAT355: Intro To Probability & Statistics for "+
+       		"Scientists and Engineers</b><br>");
     }
+    // insert code into html div
+	var insertHtml = document.getElementById(id);
+	insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 }
  
 function checkWritingIntensive(chosenClass, id){
     if(jQuery.inArray("CMSC 304", chosenClass) !== -1){
-        console.log("Yes, CMSC 304 is in the array"); 
+        var textToInsert = ("<b>Writing intensive requirement MET!</b><br>");
     }
     else {
-        console.log("No, CMSC 304 is not in the array");
+       	var textToInsert = ("<b>-You could take CMSC304: Social and Ethical Issues in Information Technology</b><br>");
  
     }
+    // insert code into html div
+	var insertHtml = document.getElementById(id);
+	insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 }
