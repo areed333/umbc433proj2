@@ -21,9 +21,9 @@
 //Initialize all needed query vars
 $classes_core = array("CMSC201","CMSC202","CMSC203","CMSC313","CMSC331","CMSC341","CMSC411",
 "CMSC421","CMSC441","CMSC447");
-$classes_mathstat = array("MATH151","MATH152","MATH221","STAT355");
-$classes_science = array("BIOL100","BIOL301","BIOL141","BIOL142","CHEM101","CHEM102","PHYS121",
-	"PHYS122");
+$classes_mathstat = array("MATH151","MATH152","MATH221");
+$classes_science = array("BIOL141","BIOL142","CHEM101","CHEM102","PHYS121",
+	"PHYS122","BIOL251","bLab251","BIOL252","bLab252","BIOL275","bLab275","BIOL302","bLab302","BIOL303","bLab303","BIOL304","bLab304","BIOL305","bLab305","cLab102","pLab122","PHYS224","PHYS304","GES110","GES111","GES120");
 	
 $classes_elec = array("CMSC426","CMSC427", "CMSC432", "CMSC433", "CMSC435", "CMSC436", "CMSC437", "CMSC442",
 		"CMSC443", "CMSC444", "CMSC446", "CMSC448", "CMSC452", "CMSC453", "CMSC455", "CMSC457", 
