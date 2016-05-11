@@ -207,6 +207,7 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 
 </script>
 <script type="text/javascript" src="phpPrint.js"></script>
+<!--script type="text/javascript" src="phpPrint2.js"></script-->
 <div id="footer">
             	&#169; UMBC College of Computer Science and Electrical Engineering, 2016 <br>
                 Contact Doug Bennett, Tim Maher, or Naomi Schumacher with problems
