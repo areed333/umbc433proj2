@@ -138,6 +138,26 @@
 }
 
 function sciClassesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
+	// for allClassesArray[:23] 4 letter classes
+	// ges is from [23:] 
+
+	var creditCount = 0;
+	// for chosenClass[i], get number + string, for e where numebr + string match
+	// add to credit...
+
+	// if 12 you completed
+
+	// if lesser.. then next in highest id.. 
+	// unless last id, in which case, pick somehting not in chosenClass
+
+
+	// just print next class in list...
+	// i.e if 
+
+	// check difference
+	// check if pre-req met
+
+
 	}
 
 
