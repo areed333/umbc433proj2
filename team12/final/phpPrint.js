@@ -51,12 +51,12 @@
 	}
 	// if no classes taken
 	if(chosenClass[0] == ""){
-		var firstClass = allClassesArray[0];
-		textToInsert += "-Start path by taking <b>"+firstClass+"</b><br>";
+		textToInsert += "<b>-No classes selected</b><br>";
 		var insertHtml = document.getElementById(id);
 		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 		return;
 	}
+
 
 	// loop through each class selected
 	for(var i=0;i<difference.length;i++){
@@ -143,9 +143,13 @@ function sciClassesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
 
 	var creditCount = 0;
 	// for chosenClass[i], get number + string, for e where numebr + string match
+	// in loop if theres a lab == true, then you completed lab ... yay
+	// note need to change that lab == ture part logic... 
+
 	// add to credit...
 
-	// if 12 you completed
+	// if creditCount == 12 you completed
+
 
 	// if lesser.. then next in highest id.. 
 	// unless last id, in which case, pick somehting not in chosenClass
