@@ -1,42 +1,39 @@
+	
+	// takes out spaces since it conflicts with object notation
 	var classSections = [];
 	for(e=0;e<classesChosen.length;e++){
 		classSections.push((classesChosen[e].replace(/\s+/g, '')).split(','));
 	}
-	console.log("all classes chosen:");
+
+	// debug of all classes chosen
+	console.log ("============start===============");
+	console.log("Classes chosen array:");
 	console.log(classSections);
+	console.log ("============end===============");
 
-	// fill cmsc electives
-	// cmscElectives();
-	// var obj = MATH;
-	// var allClassesArray = classes_mathstat;
-	// // message to print
-	// var textToInsert = "";
-	// var id = 'fMath';
 
-	// math
+	// create math classes to take in future
 	classesToTake(classSections[1], MATH, classes_mathstat, 'fMath', "");
 
-	// science
+	// create science classes to take in future
 	classesToTake(classSections[2], SCIENCE, classes_science, 'fSci', "");
 
-	// core
+	// create cmsc core classes to take in future
 	classesToTake(classSections[0], CMSC, classes_core, 'fCsCore', "");
 
-	// electives
+	// create cmsc electives classes to take in future
 	var message = "Choose two from CMSC426, CMSC431, CMSC435, CMSC445,"+ 
 	"CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose"+
 	"any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404"+
 	"and 495-499 do not qualify for this requirement. However, any from the previous list do qualify.<br><br>";
+	
 	//classesToTake(classSections[3], CMSCtitle, classes_4xx, 'fCsElec', message);
 	cmscElectives();
-
 
 function classesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
 
 	// get missing math classes (classes to take)
 	var difference = $(allClassesArray).not(chosenClass).get();
-
-
 	// if all calsses taken
 	if(difference.length == 0){
 		textToInsert += "-You've finished your required Math courses.<br>";
@@ -44,10 +41,8 @@ function classesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
 		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 		return;
 	}
-
 	// if no classes taken
 	if(chosenClass[0] == ""){
-		console.log("SAME LENGHT: "+id);
 		var firstClass = allClassesArray[0];
 		textToInsert += "-Start path by taking <b>"+firstClass+"</b><br>";
 		var insertHtml = document.getElementById(id);
@@ -85,9 +80,6 @@ function classesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
 			textToInsert += "-You could take "
 			textToInsert += ("<b>"+difference[i]);
 
-		// diff object with CMSCtitle find
-		// add if for undiefined 
-
 		// get title of class + check for undefined
 		if(typeof CMSCtitle[objIDPre] !== "undefined"){
 			var titleOfClass = obj[objIDPre].title;
@@ -96,25 +88,24 @@ function classesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
 		else{
 			textToInsert += ": "+ "DOES NOT EXIST" +"</b><br>";
 		}
-
 	}
 }
+	// insert code into html div
 	var insertHtml = document.getElementById(id);
 	insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 }
 
-
+// special function for cmscElectives since it checks others as well...
 function cmscElectives(){
 	var cmscElectives = classSections[3];
 	// subtract classes chosen from list of possible electives
 	var difference = $(classes_4xx).not(cmscElectives).get();
-
-
 	// create the message to be inserted:
 	var textToInsert = "Choose two from CMSC426, CMSC431, CMSC435, CMSC445,"+ 
 	"CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose"+
 	"any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404"+
 	"and 495-499 do not qualify for this requirement. However, any from the previous list do qualify.<br><br>";
+	
 
 	// if all calsses taken
 	if(difference.length == 0){
@@ -123,10 +114,8 @@ function cmscElectives(){
 		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 		return;
 	}
-
 	// if no classes taken
 	if(cmscElectives[0] == ""){
-		console.log("SAME LENGHT: elective");
 		var firstClass = classes_4xx[0];
 		textToInsert += "-Start path by taking <b>"+firstClass+"</b><br>";
 		var insertHtml = document.getElementById('fCsElec');
@@ -135,16 +124,41 @@ function cmscElectives(){
 	}
 
 
-
+	// loop through each class not yet taken
 	for(var i=0;i<difference.length;i++){
+		
 		// check if pre-req met
 		// check if it exists in input array
+		// get id from classdata4.js
+		// CMSCALL is only the CMSC classes
+		var objIDPre = "";
+		var objs = [CMSC,CMSC_REQ_ELEC,CMSC_ELEC,MATH,SCIENCE];
+		var start = 0;
+		while(objIDPre == ""){
+			var currentObj = objs[start];
+			objIDPre = $.grep(Object.keys(currentObj), function (k) { 
+			return currentObj[k].number == difference[i].substring(4); })
+			start += 1;
+			console.log("CHECK: "+start);
+		}
+		console.log("END");
+		var currentObj = objs[start];
 
-		// get id from classdata3.js
-		var objIDPre = $.grep(Object.keys(CMSCALL), function (k) { 
-			return CMSCALL[k].number == difference[i].substring(4); })
-		if(typeof CMSCALL[objIDPre] !== "undefined"){
-			var preReqArray = CMSCALL[objIDPre].prereq;}
+		// if(objIDPre == ""){
+		// 	objIDPre = $.grep(Object.keys(CMSC), function (k) { 
+		// 	return CMSC[k].number == difference[i].substring(4); })
+		// 	CMSC_REQ_ELEC = CMSC;
+		// 	console.log('ID2: '+objIDPre);
+		// }
+		// if(objIDPre == ""){
+		// 	objIDPre = $.grep(Object.keys(CMSC_ELEC), function (k) { 
+		// 	return CMSC_ELEC[k].number == difference[i].substring(4); })
+		// 	CMSC_REQ_ELEC = CMSC_ELEC;
+		// 	console.log('ID3: '+objIDPre);
+		// }
+
+		if(typeof currentObj[objIDPre] !== "undefined"){
+			var preReqArray = currentObj[objIDPre].prereq;}
 
 			var checkPreReq = 0;
 			for(var a=0;a<preReqArray.length;a++){
@@ -161,19 +175,20 @@ function cmscElectives(){
 			textToInsert += "-You could take "
 			textToInsert += ("<b>"+difference[i]);
 		// print titles
-		var objID = $.grep(Object.keys(CMSCtitle), function (k) { 
-			return CMSCtitle[k].number == difference[i].substring(4); })
-		if(typeof CMSCtitle[objID] !== "undefined"){
-			var titleOfClass = CMSCtitle[objID].title;
+		// var objID = $.grep(Object.keys(CMSCtitle), function (k) { 
+		// 	return CMSCtitle[k].number == difference[i].substring(4); })
+
+		if(typeof CMSC_ELEC[objIDPre] !== "undefined"){
+			var titleOfClass = CMSC_ELEC[objIDPre].title;
 			textToInsert += ": "+ titleOfClass +"</b><br>";
 		} 
 		else{
 			textToInsert += ": "+ "DOES NOT EXIST" +"</b><br>";
 		}
 	}
+	objIDPre = "";
 }
 var insertHtml = document.getElementById('fCsElec');
 insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
-
 }
 
