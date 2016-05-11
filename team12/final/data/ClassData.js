@@ -547,14 +547,14 @@ var MATH = [
     }
   ]
 var SCIENCE = [
-    {
+     {
       "type": "BIOL",
       "number": 141,
       "title": "Foundations of Biology: Cells, Energy and Organisms", 
       "description": "Major topics include structure and synthesis of nucleic acids and proteins, molecular genetics, prokaryotic and eukaryotic cell structure and function, biochemistry of energy transformation, and animal and plant development and physiology.", 
       "prereq": [],
-      "unlock": 4, // used this for credit check
-      "lab": false;
+      "unlock": 4,
+      "lab": false
     },
     {
       "type": "BIOL",
@@ -565,7 +565,7 @@ var SCIENCE = [
         "BIOL 141", "MATH 151"
       ],
       "unlock": 4,
-      "lab": false;
+      "lab": false
     },
     {
       "type": "BIOL",
@@ -576,7 +576,7 @@ var SCIENCE = [
         "BIOL 141", "CHEM 102"
       ],
       "unlock": 3, 
-      "lab": true;
+      "lab": true
     },
     {
       "type": "bLab",
@@ -587,7 +587,7 @@ var SCIENCE = [
         "BIOL 251"
       ],
       "unlock": 1,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "BIOL",
@@ -598,7 +598,7 @@ var SCIENCE = [
         "BIOL 251"
       ],
       "unlock": 3,
-      "lab": true;
+      "lab": true
     },
       {
       "type": "bLab",
@@ -609,7 +609,7 @@ var SCIENCE = [
         "bLab 251"
       ],
       "unlock": 1,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "BIOL",
@@ -620,7 +620,7 @@ var SCIENCE = [
         "BIOL 141"
       ],
       "unlock": 3,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "bLab",
@@ -631,7 +631,7 @@ var SCIENCE = [
         "BIOL 275"
       ],
       "unlock": 2,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "BIOL",
@@ -642,7 +642,7 @@ var SCIENCE = [
         "BIOL 141",  "BIOL 142",  "MATH 151", "CHEM 102"
       ],
       "unlock": 4,
-      "lab": true;
+      "lab": true
     },
         {
       "type": "bLab",
@@ -653,7 +653,7 @@ var SCIENCE = [
         "BIOL 302"
       ],
       "unlock": 2,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "BIOL",
@@ -664,7 +664,7 @@ var SCIENCE = [
         "BIOL 303"
       ],
       "unlock": 3,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "bLab",
@@ -675,7 +675,7 @@ var SCIENCE = [
         "BIOL 304"
       ],
       "unlock": 2,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "BIOL",
@@ -686,7 +686,7 @@ var SCIENCE = [
         "BIOL 303", "PHYS 122"
       ],
       "unlock": 3,
-      "lab": true;
+      "lab": true
     },
         {
       "type": "bLab",
@@ -697,7 +697,7 @@ var SCIENCE = [
         "BIOL 305"
       ],
       "unlock": 2,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "BIOL",
@@ -708,7 +708,7 @@ var SCIENCE = [
         "BIOL 302", "MATH 151"
       ],
       "unlock": 4,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "bLab",
@@ -719,7 +719,7 @@ var SCIENCE = [
         "BIOL 303"
       ],
       "unlock": 2,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "CHEM",
@@ -728,7 +728,7 @@ var SCIENCE = [
       "description": "An introduction to chemistry for science majors and other students who require a thorough grounding in the principles of chemistry.", 
       "prereq": ["MATH 151"],
       "unlock": 4,
-      "lab": false;
+      "lab": false
 
     },
     {
@@ -740,7 +740,7 @@ var SCIENCE = [
         "CHEM 101"
       ],
       "unlock": 4,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "cLab",
@@ -751,37 +751,37 @@ var SCIENCE = [
         "CHEM 102"
       ],
       "unlock": 2,
-      "lab": true;
+      "lab": true
     },
     {
-      "type": "GE&S",
+      "type": "GES",
       "title": "Physical Geography", 
       "number": 110,
       "description": "This course emphasizes classical mechanics.", 
       "prereq": [
       ],
       "unlock": 3,
-      "lab": false;
+      "lab": false
     },
     {
-      "type": "GE&S",
+      "type": "GES",
       "title": "Principles of Geology", 
       "number": 111,
       "description": "This course emphasizes classical mechanics.", 
       "prereq": [
       ],
       "unlock": 3,
-      "lab": false;
+      "lab": false
     },
     {
-      "type": "GE&S",
+      "type": "GES",
       "title": "Environmental Science and Conservation", 
       "number": 120,
       "description": "This course emphasizes classical mechanics.", 
       "prereq": [
       ],
       "unlock": 3,
-      "lab": false;
+      "lab": false
     },
     {
       "type": "PHYS",
@@ -792,7 +792,7 @@ var SCIENCE = [
         "MATH 151"
       ],
       "unlock": 4,
-      "lab": false;
+      "lab": false
     },
     {
       "type": "PHYS",
@@ -804,8 +804,8 @@ var SCIENCE = [
         "MATH 152"
       ],
       "unlock": 4,
-      "lab": true;
-    }
+      "lab": true
+    },
     {
       "type": "pLab",
       "title": "Introductory Physics I Lab", 
@@ -815,7 +815,7 @@ var SCIENCE = [
         "PHYS 122"
       ],
       "unlock": 3,
-      "lab": true;
+      "lab": true
     },
     {
       "type": "PHYS",
@@ -826,7 +826,7 @@ var SCIENCE = [
         "PHYS 122"
       ],
       "unlock": 3,
-      "lab": false;
+      "lab": false
     },
     {
       "type": "PHYS",
@@ -837,6 +837,6 @@ var SCIENCE = [
         "PHYS 122"
       ],
       "unlock": 3,
-      "lab": false;
+      "lab": false
     }
   ]

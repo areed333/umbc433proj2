@@ -16,7 +16,7 @@
 	classesToTake(classSections[1], MATH, classes_mathstat, 'fMath', "");
 
 	// create science classes to take in future
-	classesToTake(classSections[2], SCIENCE, classes_science, 'fSci', "");
+	sciClassesToTake(classSections[2], SCIENCE, classes_science, 'fSci', "");
 
 	// create cmsc core classes to take in future
 	classesToTake(classSections[0], CMSC, classes_core, 'fCsCore', "");
@@ -40,6 +40,15 @@
 		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 		return;
 	}
+	// if class is science then check for science
+	if((chosenClass[0] == "")&(id == 'fSci')){
+		textToInsert += "-Start path by taking <b>"+allClassesArray[0]+"</b> OR<br>";
+		textToInsert += "-Start path by taking <b>"+allClassesArray[4]+"</b> OR<br>";
+		textToInsert += "-Start path by taking <b>"+allClassesArray[6]+"</b> OR<br>";
+		var insertHtml = document.getElementById(id);
+		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
+		return;
+	}
 	// if no classes taken
 	if(chosenClass[0] == ""){
 		var firstClass = allClassesArray[0];
@@ -52,7 +61,8 @@
 	// loop through each class selected
 	for(var i=0;i<difference.length;i++){
 		// if 'fCsElec' or 'fsCsCore, then check all classes not just CMSC for requiremnts
-		if((id == 'fCsElec')|(id == 'fCsCore')){
+		// if((id == 'fCsElec')|(id == 'fCsCore')){
+		if(id != 'fMath'){
 		// loops through all objects instead of just one
 		var objIDPre = "";
 		var objs = [CMSC,CMSC_REQ_ELEC,CMSC_ELEC,MATH,SCIENCE];
@@ -84,13 +94,13 @@
 
 		// once preReqArray of particular class is found
 		// search it to see if user fits those preReq's
-		if((id == 'fCsElec')|(id == 'fCsCore')){
+		// if((id == 'fCsElec')|(id == 'fCsCore')){
+		if(id != 'fMath'){
 			var checkPreReq = 0;
 			for(var a=0;a<preReqArray.length;a++){
 				// remove spaces from prereq since difference does not have space
 				var tempPreReq = preReqArray[a].replace(/\s+/g, '');
 				for(var b=0;b<classSections.length;b++){
-					console.log("class selections length: "+classSections.length);
 				// check if pre-req exists in user input classes
 				if(jQuery.inArray(tempPreReq, classSections[b]) !== -1){
 					checkPreReq += 1;}}}}
@@ -108,8 +118,14 @@
 
 		// get title of class + check for undefined
 		if(typeof obj[objIDPre] !== "undefined"){
+			// check sciences
+			// if((id == 'fSci')){
+			// 	checkSci();
+			// }
+			// else{
 			var titleOfClass = obj[objIDPre].title;
 			textToInsert += ": "+ titleOfClass +"</b><br>";
+		// }
 		}
 		else{
 			textToInsert += ": "+ "DOES NOT EXIST" +"</b><br>";
@@ -120,3 +136,8 @@
 	var insertHtml = document.getElementById(id);
 	insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 }
+
+function sciClassesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
+	}
+
+

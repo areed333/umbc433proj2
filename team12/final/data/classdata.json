@@ -224,7 +224,7 @@
       "type": "CMSC",
       "number": 481,
       "title": "Computer Networks",
-      "description": "This course introduces the fundamentals of data communication and computer networking, including circuit and packet switching; network architectures and protocols; local/metropolitan/wide-area networks, OSI and TCP/IP standards; network programming and applications; and network management.", 
+      "description": "This course introduces the fundamentals of data communication and computer networking, including circuit and packet switching network architectures and protocols local/metropolitan/wide-area networks, OSI and TCP/IP standards network programming and applications and network management.", 
       "prereq": [
         "CMSC 341"
       ],
@@ -234,7 +234,7 @@
       "type": "CMSC",
       "number": 483,
       "title": "Parallel and Distributed Processing",
-      "description": "This course introduces the fundamentals of data communication and computer networking, including circuit and packet switching; network architectures and protocols; local/metropolitan/wide-area networks, OSI and TCP/IP standards; network programming and applications; and network management.", 
+      "description": "This course introduces the fundamentals of data communication and computer networking, including circuit and packet switching network architectures and protocols local/metropolitan/wide-area networks, OSI and TCP/IP standards network programming and applications and network management.", 
       "prereq": [
         "CMSC 421"
       ],
@@ -550,29 +550,12 @@
   "SCIENCE": [
     {
       "type": "BIOL",
-      "title": "Concepts of Biology", 
-      "number": 100,
-      "description": "A broad overview of contemporary biological science. Major areas include the biochemistry of energy transformation, cell structure and function, Mendelian, molecular and population genetics, development and differentiation, plant and animal physiology, evolution, and ecology.", 
-      "prereq": [],
-      "unlock": 0
-    },
-    {
-      "type": "BIOL",
-      "number": 301,
-      "title": "Ecology and Evolution", 
-      "description": "An introduction to the processes of evolution, the outcomes of evolution, and the field of ecology. Processes of evolution include understanding natural selection, genetic drift, molecular evolution and general evolution theory. ", 
-      "prereq": [
-        "BIOL 100"
-      ],
-      "unlock": 1
-    },
-    {
-      "type": "BIOL",
       "number": 141,
       "title": "Foundations of Biology: Cells, Energy and Organisms", 
       "description": "Major topics include structure and synthesis of nucleic acids and proteins, molecular genetics, prokaryotic and eukaryotic cell structure and function, biochemistry of energy transformation, and animal and plant development and physiology.", 
       "prereq": [],
-      "unlock": 0
+      "unlock": 4,
+      "lab": false
     },
     {
       "type": "BIOL",
@@ -580,17 +563,174 @@
       "title": "Foundations of Biology: Ecology and Evolution", 
       "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
       "prereq": [
+        "BIOL 141", "MATH 151"
+      ],
+      "unlock": 4,
+      "lab": false
+    },
+    {
+      "type": "BIOL",
+      "number": 251,
+      "title": "Human Anatomy and Physiology I", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 141", "CHEM 102"
+      ],
+      "unlock": 3, 
+      "lab": true
+    },
+    {
+      "type": "bLab",
+      "number": 251,
+      "title": "Human Anatomy and Physiology I Lab", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 251"
+      ],
+      "unlock": 1,
+      "lab": true
+    },
+    {
+      "type": "BIOL",
+      "number": 252,
+      "title": "Human Anatomy and Physiology II", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 251"
+      ],
+      "unlock": 3,
+      "lab": true
+    },
+      {
+      "type": "bLab",
+      "number": 252,
+      "title": "Human Anatomy and Physiology II Lab", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "bLab 251"
+      ],
+      "unlock": 1,
+      "lab": true
+    },
+    {
+      "type": "BIOL",
+      "number": 275,
+      "title": "Microbiology", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
         "BIOL 141"
       ],
-      "unlock": 1
+      "unlock": 3,
+      "lab": true
+    },
+    {
+      "type": "bLab",
+      "number": 275,
+      "title": "Microbiology Lab", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 275"
+      ],
+      "unlock": 2,
+      "lab": true
+    },
+    {
+      "type": "BIOL",
+      "number": 302,
+      "title": "Molecular and General Genetics", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 141",  "BIOL 142",  "MATH 151", "CHEM 102"
+      ],
+      "unlock": 4,
+      "lab": true
+    },
+        {
+      "type": "bLab",
+      "number": 302,
+      "title": "Molecular and General Genetics Lab", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 302"
+      ],
+      "unlock": 2,
+      "lab": true
+    },
+    {
+      "type": "BIOL",
+      "number": 304,
+      "title": "Plant Biology", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 303"
+      ],
+      "unlock": 3,
+      "lab": true
+    },
+    {
+      "type": "bLab",
+      "number": 304,
+      "title": "Plant Biology Lab", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 304"
+      ],
+      "unlock": 2,
+      "lab": true
+    },
+    {
+      "type": "BIOL",
+      "number": 305,
+      "title": "Comparative Animal Physiology", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 303", "PHYS 122"
+      ],
+      "unlock": 3,
+      "lab": true
+    },
+        {
+      "type": "bLab",
+      "number": 305,
+      "title": "Comparative Animal Physiology Lab", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 305"
+      ],
+      "unlock": 2,
+      "lab": true
+    },
+    {
+      "type": "BIOL",
+      "number": 303,
+      "title": "Cell Biology", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 302", "MATH 151"
+      ],
+      "unlock": 4,
+      "lab": true
+    },
+    {
+      "type": "bLab",
+      "number": 303,
+      "title": "Cell Biology Lab", 
+      "description": "Major topics include fundamental concepts in ecology and evolution and emphasizes the fundamental interrelationship between these two fields of study.", 
+      "prereq": [
+        "BIOL 303"
+      ],
+      "unlock": 2,
+      "lab": true
     },
     {
       "type": "CHEM",
       "number": 101,
       "title": "Principles of chemistry I", 
       "description": "An introduction to chemistry for science majors and other students who require a thorough grounding in the principles of chemistry.", 
-      "prereq": [],
-      "unlock": 0
+      "prereq": ["MATH 151"],
+      "unlock": 4,
+      "lab": false
+
     },
     {
       "type": "CHEM",
@@ -600,7 +740,49 @@
       "prereq": [
         "CHEM 101"
       ],
-      "unlock": 1
+      "unlock": 4,
+      "lab": true
+    },
+    {
+      "type": "cLab",
+      "title": "Principles of chemistry II Lab",  
+      "number": 102,
+      "description": "Principles of chemical and physical equilibrium, liquids and solids, elementary thermodynamics, electron and proton transfer reactions, electrochemistry, chemical kinetics and a further study of the periodic properties of the elements.", 
+      "prereq": [
+        "CHEM 102"
+      ],
+      "unlock": 2,
+      "lab": true
+    },
+    {
+      "type": "GES",
+      "title": "Physical Geography", 
+      "number": 110,
+      "description": "This course emphasizes classical mechanics.", 
+      "prereq": [
+      ],
+      "unlock": 3,
+      "lab": false
+    },
+    {
+      "type": "GES",
+      "title": "Principles of Geology", 
+      "number": 111,
+      "description": "This course emphasizes classical mechanics.", 
+      "prereq": [
+      ],
+      "unlock": 3,
+      "lab": false
+    },
+    {
+      "type": "GES",
+      "title": "Environmental Science and Conservation", 
+      "number": 120,
+      "description": "This course emphasizes classical mechanics.", 
+      "prereq": [
+      ],
+      "unlock": 3,
+      "lab": false
     },
     {
       "type": "PHYS",
@@ -610,7 +792,8 @@
       "prereq": [
         "MATH 151"
       ],
-      "unlock": 1
+      "unlock": 4,
+      "lab": false
     },
     {
       "type": "PHYS",
@@ -621,7 +804,41 @@
         "PHYS 121",
         "MATH 152"
       ],
-      "unlock": 2
+      "unlock": 4,
+      "lab": true
+    },
+    {
+      "type": "pLab",
+      "title": "Introductory Physics I Lab", 
+      "number": 122,
+      "description": "This course emphasizes classical mechanics.", 
+      "prereq": [
+        "PHYS 122"
+      ],
+      "unlock": 3,
+      "lab": true
+    },
+    {
+      "type": "PHYS",
+      "title": "Fundamentals of Astronomy and Astrophysics", 
+      "number": 304,
+      "description": "This course emphasizes classical mechanics.", 
+      "prereq": [
+        "PHYS 122"
+      ],
+      "unlock": 3,
+      "lab": false
+    },
+    {
+      "type": "PHYS",
+      "title": "Vibrations and Waves", 
+      "number": 224,
+      "description": "This course emphasizes classical mechanics.", 
+      "prereq": [
+        "PHYS 122"
+      ],
+      "unlock": 3,
+      "lab": false
     }
   ]
 }
