@@ -138,20 +138,20 @@ $classesChosen = array($classes_core_string, $classes_mathstat_string, $classes_
 // //------------------------------------
 // //  Actually push to the DB now!!
 // //-----------------------------------
-// mysql_insert('proj2', array(
-//     'StudentID' => $student_id,
-//     'FirstName' => $first_name,
-//     'LastName' => $last_name,
-// 	'Email' => $user_email,
-// 	'ClassStanding' => $student_year,
-// 	'QuestionsComments' => $student_comments,
-// 	'ReqCMSC' => $classes_core_string,
-// 	'ReqMATH' => $classes_mathstat_string,
-// 	'ReqSCIE' => $classes_sci_string,
-// 	'ElecCMSC' => $classes_elec_string,
-// 	'OtherCMSC' => $classes_other_string
+mysql_insert('proj2', array(
+    'StudentID' => $student_id,
+    'FirstName' => $first_name,
+    'LastName' => $last_name,
+	'Email' => $user_email,
+	'ClassStanding' => $student_year,
+	'QuestionsComments' => $student_comments,
+	'ReqCMSC' => $classes_core_string,
+	'ReqMATH' => $classes_mathstat_string,
+	'ReqSCIE' => $classes_sci_string,
+	'ElecCMSC' => $classes_elec_string,
+	'OtherCMSC' => $classes_other_string
 	
-// ));
+));
 
 
 ?>
@@ -192,9 +192,7 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 </fieldset>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<!-- <script type="text/javascript" src="data/ClassData_phpPrint.js"></script> -->
 	<script type="text/javascript" src="data/ClassData.js"></script>
-	<!-- <script type="text/javascript" src="ClassData4.js"></script> -->
 <script type="text/javascript">
 	var classesChosen = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
 	var classes_core = <?php echo '["' . implode('", "', $classes_core) . '"]' ?>;
@@ -206,8 +204,7 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 
 
 </script>
-<!--script type="text/javascript" src="phpPrint.js"></script-->
-<script type="text/javascript" src="phpPrint2.js"></script>
+<script type="text/javascript" src="phpPrint.js"></script>
 <div id="footer">
             	&#169; UMBC College of Computer Science and Electrical Engineering, 2016 <br>
                 Contact Doug Bennett, Tim Maher, or Naomi Schumacher with problems
