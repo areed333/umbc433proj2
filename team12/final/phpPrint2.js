@@ -188,6 +188,7 @@ insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
 
 function checkStat(chosenClass){
 
+	var textToInsert = "";
 
 	if(jQuery.inArray("STAT 355", chosenClass) !== -1){
 
@@ -200,10 +201,25 @@ function checkStat(chosenClass){
 		console.log("No, STAT355 is not in the array");
 
 	}
+
+
+	if(chosenClass == ""){
+
+		textToInsert += "<b>-No classes selected</b><br>";
+
+		var insertHtml = document.getElementById('fStat');
+
+		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
+
+		return;
+	}
+
 }
 	
 
 function checkWritingIntensive(chosenClass){
+
+	var textToInsert = "";
 
 	if(jQuery.inArray("CMSC 304", chosenClass) !== -1){
 
@@ -215,6 +231,18 @@ function checkWritingIntensive(chosenClass){
 
 		console.log("No, CMSC 304 is not in the array");
 
+	}
+
+
+	if(chosenClass == ""){
+
+		textToInsert += "<b>-No classes selected</b><br>";
+
+		var insertHtml = document.getElementById('fWrit');
+
+		insertHtml.insertAdjacentHTML('afterBegin', textToInsert);
+		
+		return;
 	}
 
 }

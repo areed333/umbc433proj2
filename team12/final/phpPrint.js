@@ -23,8 +23,8 @@
 
 	// create cmsc electives classes to take in future
 	var message = "Choose two from CMSC426, CMSC431, CMSC435, CMSC445,"+ 
-	"CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose"+
-	"any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404"+
+	"CMSC451, CMSC455, CMSC456, CMSC461, CMSC471, CMSC481, and CMSC483 as general electives. Then, choose "+
+	"any two additional 400-level Computer Science Courses as a technical electives. Note that CMSC404 "+
 	"and 495-499 do not qualify for this requirement. However, any from the previous list do qualify.<br><br>";
 	
 	classesToTake(classSections[3], CMSC_ELEC, classes_4xx, 'fCsElec', message);
