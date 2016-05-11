@@ -81,7 +81,7 @@ function classesToTake(chosenClass, obj, allClassesArray, id, textToInsert){
 			textToInsert += ("<b>"+difference[i]);
 
 		// get title of class + check for undefined
-		if(typeof CMSCtitle[objIDPre] !== "undefined"){
+		if(typeof obj[objIDPre] !== "undefined"){
 			var titleOfClass = obj[objIDPre].title;
 			textToInsert += ": "+ titleOfClass +"</b><br>";
 		}
@@ -135,14 +135,19 @@ function cmscElectives(){
 		var objs = [CMSC,CMSC_REQ_ELEC,CMSC_ELEC,MATH,SCIENCE];
 		var start = 0;
 		while(objIDPre == ""){
+			console.log("Ojbs value: "+start);
 			var currentObj = objs[start];
 			objIDPre = $.grep(Object.keys(currentObj), function (k) { 
 			return currentObj[k].number == difference[i].substring(4); })
 			start += 1;
-			console.log("CHECK: "+start);
+			console.log("currentObj: "+difference[i]);
+			console.log("Ojbs value 2: "+start);
+			console.log("objIDPre: "+objIDPre);
+
 		}
-		console.log("END");
-		var currentObj = objs[start];
+		var currentObj = objs[start - 1];
+		console.log("first object in currentObj:"+ currentObj[0].type + currentObj[0].number);
+		
 
 		// if(objIDPre == ""){
 		// 	objIDPre = $.grep(Object.keys(CMSC), function (k) { 
@@ -160,10 +165,20 @@ function cmscElectives(){
 		if(typeof currentObj[objIDPre] !== "undefined"){
 			var preReqArray = currentObj[objIDPre].prereq;}
 
+			console.log("preReqArray: ");
+			console.log(preReqArray);
+			console.log("_____________________________");
+			console.log("currentObj2: "+difference[i]);
+			console.log("Ojbs value2: "+start);
+			console.log("objIDPre2: "+objIDPre);
+
 			var checkPreReq = 0;
 			for(var a=0;a<preReqArray.length;a++){
+				// remove spaces from prereq since difference does not have space
 				var tempPreReq = preReqArray[a].replace(/\s+/g, '');
+
 				for(var b=0;b<classSections.length;b++){
+				console.log("class selections length: "+classSections.length);
 				// check if pre-req exists in user input classes
 				if(jQuery.inArray(tempPreReq, classSections[b]) !== -1){
 					checkPreReq += 1;

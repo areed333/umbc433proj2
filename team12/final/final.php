@@ -35,6 +35,8 @@ $classes_other_cmsc = array("CMSC232", "CMSC291", "CMSC299", "CMSC352", "CMSC391
 	"CMSC495", "CMSC498", "CMSC499");
 		
 $classes_4xx = array("CMSC441","CMSC447","CMSC426","CMSC431","CMSC435","CMSC448","CMSC451","CMSC455","CMSC456","CMSC461","CMSC471","CMSC481","CMSC483","CMSC427","CMSC432","CMSC433","CMSC436","CMSC437","CMSC442","CMSC443","CMSC444","CMSC446","CMSC452","CMSC453","CMSC457","CMSC465","CMSC466","CMSC473","CMSC475","CMSC476","CMSC477","CMSC478","CMSC479","CMSC484","CMSC486","CMSC487","CMSC493");
+		
+
 $student_id = "n/a";
 $first_name = "n/a";
 $last_name = "n/a";
@@ -190,9 +192,9 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 </fieldset>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="data/ClassData_phpPrint.js"></script>
+	<!-- <script type="text/javascript" src="data/ClassData_phpPrint.js"></script> -->
 	<script type="text/javascript" src="data/ClassData.js"></script>
-	<script type="text/javascript" src="ClassData4.js"></script>
+	<!-- <script type="text/javascript" src="ClassData4.js"></script> -->
 <script type="text/javascript">
 	var classesChosen = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
 	var classes_core = <?php echo '["' . implode('", "', $classes_core) . '"]' ?>;
