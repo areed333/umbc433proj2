@@ -3,7 +3,9 @@
 - **FORGOT ABOUT SCIENCE REQUIRMENTS IN PROJ2 RUBRIC**
 - "Add functionality for checking math and science requirements - Include JavaScript here!"
 1. Documentation - Check below for rubric:
-| File | | Topic | Person |
+
+
+| File | Topic | Person |
 | --- | --- | --- |
 | something | php | y  |
 | something | php | e  |
