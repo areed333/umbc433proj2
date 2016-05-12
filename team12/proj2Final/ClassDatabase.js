@@ -110,7 +110,3 @@ function lookUpClass(key){
 	else if (key in SCIENCE)
 		return SCIENCE[key];
 }
-
-function checkCategory(key){
-	
-}

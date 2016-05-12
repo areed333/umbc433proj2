@@ -151,13 +151,10 @@ Name: Project 1 HTML File
 	</div>
 
 	<script type="text/javascript" src = "ClassDatabase.js"></script>
-	<script type="text/javascript" src="addClasses.js"></script>
-
-	<script language="javascript">
+	<script>
 
 	$(function() {
 		loadAndParseFile();
-
 	});
 
 	// callback triggered after database initialization
@@ -204,7 +201,6 @@ Name: Project 1 HTML File
 		
 			// remove selected-option 
 			optionDom.remove(optionDom.selectedIndex);
-			//selectedClass.optionView.parentNode.removeChild(selectedClass.optionView);
 			
 			selectedDom.add(selectedClass.optionView);
 
@@ -263,8 +259,6 @@ Name: Project 1 HTML File
 	function postData(form){
 
 		var data = [];
-		//var formData = new FormData();
-
 		console.log(classTakenID.length);
 		
 		for (var i = classTakenID.length - 1; i >= 0; i--) {
@@ -278,7 +272,6 @@ Name: Project 1 HTML File
 		}
 		
 		 for(var key in data){
-		 	//formData.append(key,data[key]);
 			var input = document.createElement('input');
 		    input.type = 'hidden';
 		    input.name = key;
@@ -287,34 +280,42 @@ Name: Project 1 HTML File
 		 }
 	}
 
-		//simple sort method for multiple select objects
-		function sortSelection(selectionList) {
+	function sortSelection(selectionList) {
+		var tempId = '';
+		var tempText='';
+		for (x = 0; x < selectionList.length - 1; x++) {
+			for (y = x + 1; y < selectionList.length; y++) {
+				if (selectionList[x].text > selectionList[y].text) {
+					// Swap rows
+					var class1 = lookUpClass(selectionList[x].text);
+					var class2 = lookUpClass(selectionList[y].text);
 
-			var tempId = '';
-			var tempText='';
-			for (x = 0; x < selectionList.length - 1; x++) {
-				for (y = x + 1; y < selectionList.length; y++) {
-					if (selectionList[x].text > selectionList[y].text) {
-						// Swap rows
-						var class1 = lookUpClass(selectionList[x].text);
-						var class2 = lookUpClass(selectionList[y].text);
-
-						// move class2 above class1
-						selectionList.insertBefore(class2.optionView,class1.optionView);
-					}
+					// move class2 above class1
+					selectionList.insertBefore(class2.optionView,class1.optionView);
 				}
 			}
 		}
-		
-		//Replaces unsafe characters from the textArea part of the form with HTML safe versions
-		function scrubForm() {
-			var unsafeText = document.getElementById("commentArea").text;
-			var safeText = unsafeText.replace("<", "OPEN ANGLE BRACKET");
-			safeText = unsafeText.replace('"', "DOUBLE QUOTE");
-			safeText = unsafeText.replace(';', "SEMICOLON");
-			document.getElementById("commentArea").text = safeText;
-		}
+	}
 
-	</script>
+	function addClasses(domID,classArray) {
+		selectionDOM = document.getElementById(domID);
+
+		for(var key in classArray){
+			var klass = classArray[key];
+			selectionDOM.add(klass.optionView);
+		}
+	}
+
+	function generateOptions(){
+		console.log("generate options");
+		var domIDs = ["cmsc","math","science","cmscReqElec","cmscElec"];
+		var objs = [CMSC,MATH,SCIENCE,CMSC_REQ_ELEC,CMSC_ELEC];
+
+		for (var i = 0; i < domIDs.length; i++) {
+			addClasses(domIDs[i],objs[i]);
+		}
+	}
+
+</script>
 </body>
 </html>
