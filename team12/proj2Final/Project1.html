@@ -1,0 +1,320 @@
+<!--
+Name: Project 1 HTML File
+-->
+<!DOCTYPE html><html>
+<head>
+	<title>Advising</title>
+	<link rel="stylesheet" type="text/css" href="Project1.css">
+	<link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="ClassData3.js"></script>
+</head>
+
+<body>
+	<div class='wrap'>
+		<!--<div class='left'></div>-->
+		<div class='center'>
+        
+            	<img src="umbc50.jpg">
+			<h1>
+                Computer Science Advising Form
+			</h1>
+			<h2>Please fill out the form below before coming to your advising appointment.</h2>
+			<!--start form-->
+			<form onsubmit="postData(this)" name="documentForm" action="final.php" method="GET" >
+            	<!--this fieldset contains the student personal information-->
+				<fieldset>
+					<legend>Personal information:</legend>
+					Name:<br>
+					<input type="text" name="firstname" placeholder="First" required pattern="[A-Za-z-']+$">
+					<input type="text" name="lastname" placeholder="Last" required pattern="[A-Za-z-']+$"><br><br>
+	
+					Student ID:<br>
+					<input type="text" name="ID" required pattern="([A-Z]|[a-z])([A-Z]|[a-z])[0-9][0-9][0-9][0-9][0-9]$"><br><br>
+	
+					UMBC Email:<br>
+					<input type="email" name="email" required pattern="[A-Za-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br><br>
+	
+					Class Standing:<br>
+					<select name="year">
+						<option value="1">Freshman</option>
+						<option value="2">Sophomore</option>
+						<option value="3">Junior</option>
+						<option value="4">Senior</option>
+                        <option value="5">Other</option>
+					</select>
+
+					<br><br>
+					Additional questions/comments:<br>
+					<textarea id="commentArea" name="comments" rows="10" cols="50"></textarea>
+				</fieldset><br>
+                <!--this fieldset contains all of the select multiples, with courses inside, as well as the buttons to move courses back and forth-->
+				<fieldset class="container">
+                    <legend>Coursework:</legend>
+					<div id="DivWrap" class="wrapper">
+
+						<div id="LeftDiv" class="float-left">
+                        	<!--This is the section for courses the student selects as untaken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
+							Required Computer Science Courses:<br>
+							<select multiple class = "leftBox" id="cmsc" name="cmscOptions">
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmsc')">
+                            
+                            <br>&nbsp;<br>
+							
+							<br>Required Math Courses:<br>
+							<select multiple class = "leftBox" id="math" name="mathOptions">
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('math')">
+                            
+                            <br>&nbsp;<br>
+							
+							<br>Required Science Courses (1 Track):<br>
+							<select multiple class = "leftBox" id="science" name="scienceOptions">				
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('science')">
+
+                            <br>&nbsp;<br>
+							
+							<br>Required Computer Science Electives (2 Required):<br>
+							<select multiple class = "leftBox" id="cmscReqElec" name="cmscReqElecOptions">
+							</select>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmscReqElec')">
+
+                            <br>&nbsp;<br>
+							
+							<br>Other Computer Science Electives:<br>
+							<select multiple class = "leftBox" id="cmscElec" name="cmscElecOptions">
+							</select><br>
+							<input type="Button" class="leftButton" value="Add Selected Course ->" onClick="selectClass('cmscElec')">
+                            <br>&nbsp;<br>
+						</div>
+	
+						<div id="RightDiv" class="float-right">
+                        	<!--This is the section for courses the student selects as taken to be moved to graphically, the select multiples have no bearing on the actual form submission-->
+							&nbsp;<br>
+							<select multiple class = "rightBox" id="cmsc-selected" name="cmsc-selected">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('cmsc')">
+                            
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							
+							<select multiple class = "rightBox" id="math-selected" name="selectedMath">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('math')">
+                            
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							
+							<select multiple class = "rightBox" id="science-selected" name="selectedScience">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('science')">
+                           
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							
+							<select multiple class = "rightBox" id="cmscReqElec-selected" name="selectedCmscReqElec">
+							</select>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('cmscReqElec')">
+                           
+                            <br>&nbsp;<br>
+							<br>&nbsp;<br>
+							
+							<select multiple class = "rightBox" id="cmscElec-selected" name="selectedCmscElec">
+							</select><br>
+							<input type="Button" class="rightButton" value="<- Remove Selected Course" onClick="unselectClass('cmscElec')">
+                            
+                            <br>&nbsp;<br>
+						</div>
+						<br>
+					</div>
+				</fieldset><br>
+             
+				<br><br><br>
+
+				<input type="Submit" value="Submit">
+
+			</form>
+
+			<br>
+			<br>
+
+			<div id="footer">
+            	&#169; UMBC College of Computer Science and Electrical Engineering, 2016 <br>
+                <del>Contact Doug Bennett, Tim Maher, or Naomi Schumacher with problems</del><br>
+                Contact jorhnthunder, yadi, aaron instead.
+
+		    </div>
+		</div>
+        <!--<div class='right'></div>-->
+	</div>
+
+	<script type="text/javascript" src = "ClassDatabase.js"></script>
+	<script type="text/javascript" src="addClasses.js"></script>
+
+	<script language="javascript">
+
+	$(function() {
+		loadAndParseFile();
+
+	});
+
+	// callback triggered after database initialization
+	function onLoaded(){
+		generateOptions();
+	}
+
+	var classTakenID = [];
+
+	function selectClass(selectionDomID){
+		console.log(selectionDomID);
+		var optionDom = document.getElementById(selectionDomID);
+		console.log(optionDom);
+		var selectedDom = document.getElementById(selectionDomID+"-selected");
+		var selectedOption = optionDom.value;  // ex. CMSC 201
+		console.log(selectedOption);
+		var selectedClass = lookUpClass(selectedOption);
+		console.log(selectedClass.spacedIndexStr);
+
+		// check prereq
+		var preReqs = selectedClass.prereq;
+		var alertMessage = selectedClass.indexStr + " requires: ";
+		var prereqNotMeet = false;
+		for (var i = 0; i < preReqs.length; i++) {
+
+			// check if prereq class is taken
+			var index = classTakenID.indexOf(preReqs[i]);
+			// prereq not taken 
+			if(index == -1){
+				prereqNotMeet = true;
+
+				// prepare alert messeage
+				alertMessage += (preReqs[i] + " ");
+			}
+		}
+		// prereq not meet yet
+		if (prereqNotMeet) {
+			window.alert(alertMessage);
+		}
+		else{
+			// store selected class as taken
+			classTakenID.push(selectedClass.spacedIndexStr);
+			console.log("selected " + selectedClass.indexStr);
+		
+			// remove selected-option 
+			optionDom.remove(optionDom.selectedIndex);
+			//selectedClass.optionView.parentNode.removeChild(selectedClass.optionView);
+			
+			selectedDom.add(selectedClass.optionView);
+
+			console.log(selectedClass.optionView.text);
+
+			sortSelection(selectedDom);
+		}
+	}
+
+	function unselectClass(selectionDomID){
+		console.log(selectionDomID);
+		var optionDom = document.getElementById(selectionDomID);
+		console.log(optionDom);
+		var selectedDom = document.getElementById(selectionDomID+"-selected");
+		var selectedOption = selectedDom.value;  // ex. CMSC 201
+		console.log(selectedOption);
+		var selectedClass = lookUpClass(selectedOption);
+
+		// move to left option box
+		selectedDom.remove(selectedDom.selectedIndex);
+		optionDom.add(selectedClass.optionView);
+
+		// remove from taken list
+		var index = this.classTakenID.indexOf(selectedClass.spacedIndexStr);
+		this.classTakenID.splice(index,1);
+
+		// recursively remove unlocked classes
+		removeUnlocked(selectedClass);
+	
+		sortSelection(optionDom);
+		console.log(classTakenID);
+	}
+
+	function removeUnlocked(classToRemove){
+		for (var i = classTakenID.length - 1; i >= 0; i--) {
+			console.log(classTakenID[i]);
+			var takenClass = lookUpClass(classTakenID[i]);
+
+			if(takenClass.prereq.indexOf(classToRemove.spacedIndexStr) != -1){
+				var parentID = takenClass.optionView.parentNode.id;
+				takenClass.optionView.parentNode.removeChild(takenClass.optionView);
+				console.log(parentID);
+				var optionDomID = parentID.split("-")[0];
+				console.log(optionDomID);
+				var optionDom = document.getElementById(optionDomID);
+				optionDom.add(takenClass.optionView);
+
+				classTakenID.splice(i,1);
+				console.log(classTakenID);
+		
+				removeUnlocked(takenClass);
+			}
+		}
+	}
+
+	function postData(form){
+
+		var data = [];
+		//var formData = new FormData();
+
+		console.log(classTakenID.length);
+		
+		for (var i = classTakenID.length - 1; i >= 0; i--) {
+			var parentId = lookUpClass(classTakenID[i]).optionView.parentNode.id;
+			var categoryID = parentId.split("-")[0];
+
+			if (categoryID in data)
+				data[categoryID] += (classTakenID[i] + ",");
+			else
+				data[categoryID] = (classTakenID[i] + ",");
+		}
+		
+		 for(var key in data){
+		 	//formData.append(key,data[key]);
+			var input = document.createElement('input');
+		    input.type = 'hidden';
+		    input.name = key;
+		    input.value = data[key];
+		    form.appendChild(input);
+		 }
+	}
+
+		//simple sort method for multiple select objects
+		function sortSelection(selectionList) {
+
+			var tempId = '';
+			var tempText='';
+			for (x = 0; x < selectionList.length - 1; x++) {
+				for (y = x + 1; y < selectionList.length; y++) {
+					if (selectionList[x].text > selectionList[y].text) {
+						// Swap rows
+						var class1 = lookUpClass(selectionList[x].text);
+						var class2 = lookUpClass(selectionList[y].text);
+
+						// move class2 above class1
+						selectionList.insertBefore(class2.optionView,class1.optionView);
+					}
+				}
+			}
+		}
+		
+		//Replaces unsafe characters from the textArea part of the form with HTML safe versions
+		function scrubForm() {
+			var unsafeText = document.getElementById("commentArea").text;
+			var safeText = unsafeText.replace("<", "OPEN ANGLE BRACKET");
+			safeText = unsafeText.replace('"', "DOUBLE QUOTE");
+			safeText = unsafeText.replace(';', "SEMICOLON");
+			document.getElementById("commentArea").text = safeText;
+		}
+
+	</script>
+</body>
+</html>
