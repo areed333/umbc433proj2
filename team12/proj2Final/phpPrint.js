@@ -1,4 +1,3 @@
-	
 	// takes out spaces since it conflicts with object notation
 	var classSections = [];
 	for(e=0;e<classesChosen.length;e++){
@@ -117,15 +116,9 @@
 			textToInsert += "-You could take "
 			textToInsert += ("<b>"+difference[i]);
 
-		// get title of class + check for undefined
-		if(typeof obj[objIDPre] !== "undefined"){
-			var titleOfClass = obj[objIDPre].title;
-			textToInsert += ": "+ titleOfClass +"</b><br>";
-		// }
-		}
-		else{
-			textToInsert += ": "+ "DOES NOT EXIST" +"</b><br>";
-		}
+
+		var obj = lookUpClass(classType+" "+classNum);
+		textToInsert += ": "+ obj.title +"</b><br>";
 	}
 }
 	// insert code into html div
@@ -140,12 +133,9 @@ function creditsTaken(chosenClass,obj){
 		var classNum = chosenClass[i].replace(/\D+/g, '');
 		var classType = chosenClass[i].replace(/[0-9]+/g, '');
 		// serach object for credits value
-		objID = $.grep(Object.keys(obj), function (k) { 
-				return ((obj[k].number == classNum)&(obj[k].type == classType)); })
-		creditsTotal += obj[objID].unlock;
+		creditsTotal += SCIENCE[classType+" "+classNum].unlock;
 
 	}
-
 	return creditsTotal;
 }
 

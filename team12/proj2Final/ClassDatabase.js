@@ -10,7 +10,7 @@ var MATH = [];
 var SCIENCE = [];
 
 class Class {
-	constructor(type,number,prereq,unlock) {
+	constructor(type,number,prereq,unlock,title) {
 		this.type = type;
 		this.number = number;
 		this.indexStr = type + number;
@@ -19,6 +19,7 @@ class Class {
 		this.optionView = this.initView();
 		this.parentDOM = null;
 		this.unlock = unlock;
+		this.title = title;
 	}
 
 	initView(){
@@ -90,7 +91,8 @@ function createClassFromRawData(data){
 	var num = data["number"];
 	var prereq = data["prereq"];
 	var unlock = data["unlock"];
-	var klass = new Class(type,num,prereq,unlock);
+	var title = data["title"];
+	var klass = new Class(type,num,prereq,unlock,title);
 
 	return klass;
 }
