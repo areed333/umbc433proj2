@@ -10,7 +10,7 @@ var MATH = [];
 var SCIENCE = [];
 
 class Class {
-	constructor(type,number,prereq) {
+	constructor(type,number,prereq,unlock) {
 		this.type = type;
 		this.number = number;
 		this.indexStr = type + number;
@@ -18,6 +18,7 @@ class Class {
 		this.prereq = prereq; // this var won't change  ==> Max Hp
 		this.optionView = this.initView();
 		this.parentDOM = null;
+		this.unlock = unlock;
 	}
 
 	initView(){
@@ -88,6 +89,7 @@ function createClassFromRawData(data){
 	var type = data["type"];
 	var num = data["number"];
 	var prereq = data["prereq"];
+	var unlock = data["unlock"];
 	var klass = new Class(type,num,prereq);
 
 	return klass;
