@@ -202,7 +202,7 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 
 	function onLoaded(){
 		var script = document.createElement("script");
-		script.src = 'phpPrint.js';
+		script.src = 'futureClasses.js';
 		document.body.appendChild(script);
 		console.log(CMSC);
 	}
