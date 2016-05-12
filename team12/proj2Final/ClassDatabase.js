@@ -90,7 +90,7 @@ function createClassFromRawData(data){
 	var num = data["number"];
 	var prereq = data["prereq"];
 	var unlock = data["unlock"];
-	var klass = new Class(type,num,prereq);
+	var klass = new Class(type,num,prereq,unlock);
 
 	return klass;
 }
