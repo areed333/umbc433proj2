@@ -191,9 +191,19 @@ CMSC331, CMSC341, CMSC411, CMSC421, CMSC441, and  CMSC447):</legend>
 
 </fieldset>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script type="text/javascript" src = "ClassDatabase.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script type="text/javascript" src="data/ClassData.js"></script>
+
 <script type="text/javascript">
+	
+	$(function() {
+		loadAndParseFile();
+	});
+
+	function onLoaded(){
+		console.log(CMSC);
+	}
+
 	var classesChosen = <?php echo '["' . implode('", "', $classesChosen) . '"]' ?>;
 	var classes_core = <?php echo '["' . implode('", "', $classes_core) . '"]' ?>;
 	var classes_mathstat = <?php echo '["' . implode('", "', $classes_mathstat) . '"]' ?>;
